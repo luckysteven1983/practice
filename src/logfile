@@ -1,0 +1,111 @@
+
+                              WARNING! 
+This computer system and network is PRIVATE and PROPRIETARY and may 
+only be accessed by authorized users. Unauthorized use of this computer 
+system or network is strictly prohibited and may be subject to criminal 
+prosecution, employee discipline up to and including discharge, or the 
+termination of vendor/service contracts. The owner, or its agents, may 
+monitor any activity or communication on the computer system or network. 
+The owner, or its agents, may retrieve any information stored within the 
+computer system or network. By accessing and using this computer system 
+or network, you are consenting to such monitoring and information 
+retrieval for law enforcement and other purposes. Users should have no 
+expectation of privacy as to any communication on or information stored 
+within the computer system or network, including information stored 
+locally or remotely on a hard drive or other media in use with this 
+computer system or network.
+
+
+                              WARNING! 
+This computer system and network is PRIVATE and PROPRIETARY and may 
+only be accessed by authorized users. Unauthorized use of this computer 
+system or network is strictly prohibited and may be subject to criminal 
+prosecution, employee discipline up to and including discharge, or the 
+termination of vendor/service contracts. The owner, or its agents, may 
+monitor any activity or communication on the computer system or network. 
+The owner, or its agents, may retrieve any information stored within the 
+computer system or network. By accessing and using this computer system 
+or network, you are consenting to such monitoring and information 
+retrieval for law enforcement and other purposes. Users should have no 
+expectation of privacy as to any communication on or information stored 
+within the computer system or network, including information stored 
+locally or remotely on a hard drive or other media in use with this 
+computer system or network.
+
+ainet@atca55's password: ainet@atca55's password: ainet1
+
+
+Last login: Wed Jan 27 13:59:26 CST 2016 from pcp048326pcs.cn.alcatel-lucent.com on pts/2
+
+                              WARNING! 
+This computer system and network is PRIVATE and PROPRIETARY and may 
+only be accessed by authorized users. Unauthorized use of this computer 
+system or network is strictly prohibited and may be subject to criminal 
+prosecution, employee discipline up to and including discharge, or the 
+termination of vendor/service contracts. The owner, or its agents, may 
+monitor any activity or communication on the computer system or network. 
+The owner, or its agents, may retrieve any information stored within the 
+computer system or network. By accessing and using this computer system 
+or network, you are consenting to such monitoring and information 
+retrieval for law enforcement and other purposes. Users should have no 
+expectation of privacy as to any communication on or information stored 
+within the computer system or network, including information stored 
+locally or remotely on a hard drive or other media in use with this 
+computer system or network.
+
+Last login: Wed Jan 27 13:59:26 CST 2016 from pcp048326pcs.cn.alcatel-lucent.com on pts/2
+
+                              WARNING! 
+This computer system and network is PRIVATE and PROPRIETARY and may 
+only be accessed by authorized users. Unauthorized use of this computer 
+system or network is strictly prohibited and may be subject to criminal 
+prosecution, employee discipline up to and including discharge, or the 
+termination of vendor/service contracts. The owner, or its agents, may 
+monitor any activity or communication on the computer system or network. 
+The owner, or its agents, may retrieve any information stored within the 
+computer system or network. By accessing and using this computer system 
+or network, you are consenting to such monitoring and information 
+retrieval for law enforcement and other purposes. Users should have no 
+expectation of privacy as to any communication on or information stored 
+within the computer system or network, including information stored 
+locally or remotely on a hard drive or other media in use with this 
+computer system or network.
+
+No mail for ainet
+No mail for ainet
+Term type is now ansi
+Term type is now ansi
+ATCA55-0-0-1:/u/ainet-> ATCA55-0-0-1:/u/ainet-> su - root
+su - rootsu - root
+
+Password: Password: r00t
+
+
+Last login: Wed Jan 27 14:02:08 CST 2016 from localhost.localdomain on ssh
+Last login: Wed Jan 27 14:02:08 CST 2016 from localhost.localdomain on ssh
+No mail for root
+No mail for root
+Term type is now ansi
+Term type is now ansi
+ATCA55-0-0-1:/root-# ATCA55-0-0-1:/root-# ls /root
+ls /root
+ls /root
+11439.log		 A_GdmiCache.txt  deltc6trace	    oam_init.log
+2002.log		 B_GdmiCache.txt  fe.txt	    oam_init_nowd.log
+2002_notraffic.log	 GD_tool	  gd.log	    oam_init_wd.log
+2002_notraffic_3min.log  MDtarDir	  gd_download.pcap  rsyncIP
+3212.log		 S52ACEsync	  kk		    swap.log
+3212_a.log		 S55sdmcore	  ll		    tc6trace
+3212_b.log		 SDM-11442	  log		    test
+4000.log		 a_wd.log	  newinstall1.out   test.cap
+ATCA55_s7.sql		 b_wd.log	  oam.log	    test.pcap
+ATCA55-0-0-1:/root-# 11439.log		 A_GdmiCache.txt  deltc6trace	    oam_init.log
+2002.log		 B_GdmiCache.txt  fe.txt	    oam_init_nowd.log
+2002_notraffic.log	 GD_tool	  gd.log	    oam_init_wd.log
+2002_notraffic_3min.log  MDtarDir	  gd_download.pcap  rsyncIP
+3212.log		 S52ACEsync	  kk		    swap.log
+3212_a.log		 S55sdmcore	  ll		    tc6trace
+3212_b.log		 SDM-11442	  log		    test
+4000.log		 a_wd.log	  newinstall1.out   test.cap
+ATCA55_s7.sql		 b_wd.log	  oam.log	    test.pcap
+ATCA55-0-0-1:/root-# 

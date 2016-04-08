@@ -1,0 +1,172 @@
+
+                              WARNING! 
+This computer system and network is PRIVATE and PROPRIETARY and may 
+only be accessed by authorized users. Unauthorized use of this computer 
+system or network is strictly prohibited and may be subject to criminal 
+prosecution, employee discipline up to and including discharge, or the 
+termination of vendor/service contracts. The owner, or its agents, may 
+monitor any activity or communication on the computer system or network. 
+The owner, or its agents, may retrieve any information stored within the 
+computer system or network. By accessing and using this computer system 
+or network, you are consenting to such monitoring and information 
+retrieval for law enforcement and other purposes. Users should have no 
+expectation of privacy as to any communication on or information stored 
+within the computer system or network, including information stored 
+locally or remotely on a hard drive or other media in use with this 
+computer system or network.
+
+ainet@atca55's password: ainet1
+
+Last login: Wed Jan 27 16:56:33 CST 2016 from pcp048326pcs.cn.alcatel-lucent.com on pts/2
+
+                              WARNING! 
+This computer system and network is PRIVATE and PROPRIETARY and may 
+only be accessed by authorized users. Unauthorized use of this computer 
+system or network is strictly prohibited and may be subject to criminal 
+prosecution, employee discipline up to and including discharge, or the 
+termination of vendor/service contracts. The owner, or its agents, may 
+monitor any activity or communication on the computer system or network. 
+The owner, or its agents, may retrieve any information stored within the 
+computer system or network. By accessing and using this computer system 
+or network, you are consenting to such monitoring and information 
+retrieval for law enforcement and other purposes. Users should have no 
+expectation of privacy as to any communication on or information stored 
+within the computer system or network, including information stored 
+locally or remotely on a hard drive or other media in use with this 
+computer system or network.
+
+No mail for ainet
+Term type is now xterm
+ATCA55-0-0-1:/u/ainet-> su - root
+su - root
+Password: r00t
+
+Last login: Wed Jan 27 16:58:05 CST 2016 from localhost.localdomain on ssh
+No mail for root
+Term type is now xterm
+ATCA55-0-0-1:/root-# rm -r /MDS/pt
+rm -r /MDS/pt
+ATCA55-0-0-1:/root-# mkdir /MDS/pt
+mkdir /MDS/pt
+ATCA55-0-0-1:/root-# cd /MDS/pt
+cd /MDS/pt
+ATCA55-0-0-1:/MDS/pt-# ftp 135.252.181.15
+ftp 135.252.181.15
+Connected to 135.252.181.15 (135.252.181.15).
+220 (vsFTPd 2.0.5)
+Name (135.252.181.15:root): baliang
+baliang
+331 Please specify the password.
+Password:baliang
+
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+[?1034hftp> cd /home/baliang/PF_tool
+cd /home/baliang/PF_tool
+250 Directory successfully changed.
+ftp> bin
+bin
+200 Switching to Binary mode.
+ftp> get pt_4X_mcas.tar.gz
+get pt_4X_mcas.tar.gz
+local: pt_4X_mcas.tar.gz remote: pt_4X_mcas.tar.gz
+227 Entering Passive Mode (135,252,181,15,47,213)
+150 Opening BINARY mode data connection for pt_4X_mcas.tar.gz (31394 bytes).
+226 File send OK.
+31394 bytes received in 0.00369 secs (8514.78 Kbytes/sec)
+ftp> bye
+bye
+221 Goodbye.
+ATCA55-0-0-1:/MDS/pt-# tar xvfz pt_4X_mcas.tar.gz
+tar xvfz pt _4X _mcas.tar.gz
+dopack.sh
+checklab
+autotest.sh
+upload.exp
+upload
+toprc
+switch.ini
+stoplog.sh
+startlog.sh
+_startlog.sh
+simpWatch
+shunit2
+runtest
+rexec_switch.exp
+rexec_switch
+readme.txt
+pt
+meminfo
+log_switch
+local_profile
+lg
+gmetric_pmap.sh
+gmetric_cpu.sh
+getrouter.exp
+getrouter
+fw
+gpackcore
+install.sh
+log.ini
+netstat_lb.sh
+netstat_rt.sh
+netstat_db.sh
+lftp
+lnewinstall
+lcores
+lping
+list_contract.exp
+pt_upload
+log.sql
+log_collector.sh
+archive.sh
+bkdoor
+fbkdoor_meas
+bbkdoor_meas
+Readme.txt
+ATCA55-0-0-1:/MDS/pt-# cd ..;chown -R root:root pt;cd pt;cp log.ini log.ini.sync
+d pt;cp log.ini log.ini.sync                          <
+ATCA55-0-0-1:/MDS/pt-# ./install.sh FE pt_4X_mcas.tar.gz
+./install.sh FE pt _4X _mcas.tar.gz
+copy and tar zxvf pt_4X_mcas.tar.gz to all station
+On STATION_A ...OK
+On STATION_B ...OK
+On STATION_C ...OK
+On STATION_E ...OK
+On STATION_G ...OK
+On STATION_I ...OK
+On STATION_K ...OK
+On STATION_D ...OK
+On STATION_F ...OK
+On STATION_H ...OK
+On STATION_J ...OK
+On STATION_L ...OK
+create lg/pt/gpackcore/lftp/lcores link on STATION_A STATION_B
+create lg link on STATION_C STATION_E STATION_G STATION_I STATION_K STATION_D STATION_F STATION_H STATION_J STATION_L
+create .local_profile in /root
+Create /MDS/pt/common.ini.sync file
+sync /MDS/pt/common.ini.sync on STATION_A STATION_B STATION_C STATION_E STATION_G STATION_I STATION_K STATION_D STATION_F STATION_H STATION_J STATION_L ... 
+sync OK
+sync /MDS/pt/log.ini.sync on STATION_A STATION_B STATION_C STATION_E STATION_G STATION_I STATION_K STATION_D STATION_F STATION_H STATION_J STATION_L ... 
+sync OK
+Done
++ Done
+ATCA55-0-0-1:/MDS/pt-# psql -U scncraft -f /MDS/pt/log.sql
+psql -U scncraft -f /MDS/pt/log.sql
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+ATCA55-0-0-1:/MDS/pt-# /cs/sn/cr/cepexec INIT_PROC "init:proc=CSOP,level=1,UCL"
+"init:proc=CSOP,level=1,UCL"                          <
+ATCA55-0-0-1:/MDS/pt-# /usr/sbin/ConfigIdleLogout -disable
+/usr/sbin/ConfigIdleLogout -disable
+Idle session logout has been disabled on ATCA55-0-0-1
+ATCA55-0-0-1:/MDS/pt-# sed -i 's/#__DEFAULT__MAX_SIMULTANEOUS_LOGINS=6/MAX_SIMULTANEOUS_LOGINS=0/' /etc/default/passwd
+SIMULTANEOUS _LOGINS=0/' /etc                          </default/passwd
+ATCA55-0-0-1:/MDS/pt-# service xinetd restart
+service xinetd restart
+Stopping xinetd: [60G[[0;32m  OK  [0;39m]
+Starting xinetd: [60G[[0;32m  OK  [0;39m]
+ATCA55-0-0-1:/MDS/pt-# 

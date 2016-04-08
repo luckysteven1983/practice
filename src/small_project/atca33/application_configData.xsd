@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by zhangli (EMBRACE) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <xsd:element name="applicationConfiguration">
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element name="module" maxOccurs="unbounded">
+     <xsd:complexType>
+      <xsd:choice>
+       <xsd:element name="function" maxOccurs="unbounded">
+        <xsd:complexType>
+	 <xsd:sequence>
+	  <xsd:element name="option" maxOccurs="unbounded">
+	   <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+             <xsd:element name="configuration" maxOccurs="unbounded">
+	      <xsd:annotation>
+	       <xsd:documentation>This value defines the configuration type that option applies		
+	       </xsd:documentation>
+	      </xsd:annotation>
+              <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+		<xsd:pattern value="FE"/>
+		<xsd:pattern value="BE"/>
+        <xsd:pattern value="EBE"/>
+		<xsd:pattern value="CM"/>
+	        <xsd:pattern value="CS"/>
+                <xsd:pattern value="Prov-FE"/>
+	       </xsd:restriction>
+	      </xsd:simpleType>
+	     </xsd:element>
+	     <xsd:element name="default_value"/>
+	     <xsd:element name="example"/>
+	     <xsd:element name="comment">
+	      <xsd:annotation>
+	       <xsd:documentation>This value defines the meaning and usage of this option</xsd:documentation>
+	      </xsd:annotation>
+	     </xsd:element>
+	     <xsd:element name="mandatory">
+	      <xsd:annotation>
+	       <xsd:documentation>YES refers to this option must be configured;NO refers to this is an optional option and if customer doesn't define any value, the default_value will be used.</xsd:documentation>
+	      </xsd:annotation>
+	      <xsd:simpleType>
+	       <xsd:restriction base="xsd:string">
+		<xsd:pattern value="NO"/>
+		<xsd:pattern value="YES"/>
+	       </xsd:restriction>
+	      </xsd:simpleType>
+	     </xsd:element>
+             <xsd:element name="caseSensitive" default="NO">
+              <xsd:annotation>
+               <xsd:documentation>YES refers to this option is case sensitive;NO is not sensitive.</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                <xsd:pattern value="NO"/>
+                <xsd:pattern value="YES"/>
+               </xsd:restriction>
+              </xsd:simpleType>
+             </xsd:element>
+	     <xsd:element name="site_priority" default="0">
+	      <xsd:annotation>
+	       <xsd:documentation>This value defines if this option is site priority or not.1 refers to site priority, it results in during SPA upgrade, the value defined by customer on vn xml file will be used for vn+1 SPA,instead of the value defined in vn+1 xml.</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+	       <xsd:restriction base="xsd:integer">
+	        <xsd:enumeration value="0"/>
+		<xsd:enumeration value="1"/>
+	       </xsd:restriction>
+	      </xsd:simpleType>
+	     </xsd:element>
+             <xsd:element name="level" default="0">
+              <xsd:annotation>
+               <xsd:documentation>user level, this data will impact on the level of data which can be configured by different user. 0 is common level; 1 is super level.</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+               <xsd:restriction base="xsd:integer">
+                <xsd:pattern value="0"/>
+                <xsd:pattern value="1"/>
+               </xsd:restriction>
+              </xsd:simpleType>
+             </xsd:element>
+	    </xsd:choice>
+	    <xsd:attribute name="name" type="xsd:string" use="required"/>
+            <xsd:attribute name="value" use="required"/>
+           </xsd:complexType>
+ 	  </xsd:element>
+	 </xsd:sequence>
+         <xsd:attribute name="name" type="xsd:string" use="required"/>
+	 <xsd:attribute name="comment" use="optional"/>
+        </xsd:complexType>
+        <xsd:unique name="optionUnique">
+	 <xsd:selector xpath="./option"/>
+	 <xsd:field xpath="@name"/>
+        </xsd:unique>
+       </xsd:element>
+      </xsd:choice>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="comment" use="optional"/>
+     </xsd:complexType>
+     <xsd:unique name="functionUnique">
+      <xsd:selector xpath="./function"/>
+      <xsd:field xpath="@name"/>
+     </xsd:unique>
+    </xsd:element>
+   </xsd:sequence>
+   <xsd:attribute name="version" type="xsd:string"  use="optional"/>
+   <!-- 'optional' to play safe-->
+  </xsd:complexType>
+  <xsd:unique name="moduleUnique">
+   <xsd:selector xpath="./module"/>
+   <xsd:field xpath="@name"/>
+  </xsd:unique>
+ </xsd:element>
+</xsd:schema>

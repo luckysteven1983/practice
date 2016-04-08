@@ -1,0 +1,31 @@
+MDS_version=DDM91.00.11.06.P4
+
+		DbSupervisor,GdmpServerOverload=DDM91.00.11.06.P4
+                ServicesConfiguration.py=DDM91.00.11.06.P4
+                DDM.POST,DDM.PRE=DDM91.00.11.06.P4
+                mon.sh=DDM91.00.11.06.P4
+
+MDS_version=DDM91.00.11.06.P3
+
+		DbSupervisor=DDM91.00.11.06.P3
+		libGdmi.so,libClientGdmi.so,GdmpServerpf_generic.cfg,pf_generic.cfg=DDM91.00.11.06.P3
+		libLdapGdmi.so, ldapServer=DDM91.00.11.05
+
+MDS_version=DDM91.00.11.06.P2
+
+		ndbd, ndbmtd, ndb_mgmd=DDM91.00.11.06.P2
+		DbSupervisor=DDM91.00.11.06.P2
+
+MDS_version=DDM91.00.11.06.P1
+
+		libGdmi.so,libClientGdmi.so,libFwkInfra.so,GdmpServer=DDM91.00.11.06.P1
+		libPfManagementImpl.so,GdmpServerOverload,DbSupervisor=DDM91.00.11.06.P1
+                cleanup.sh,Management.py,ServicesConfiguration.py,Descriptors_gdmp.py,Descriptors_gdmp.xml=DDM91.00.11.06.P1
+
+MDS_version=DDM91.00.11.05
+
+		GDMI_____version=DDM91.00.11.05
+ 		DBSUP____version=DDM91.00.11.01
+ 		LDAP_____version=DDM91.00.11.05
+ 		MYSQL____version=MYSQL-5.5.35-NDB-7.2.15_PATCH_3-8358265101_3-8716439141_3-8900550351_V12
+ 		OPENLDAP_version=OPENLDAP-2.4.33-02

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<NCO xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='/usr/dhafw/conf/cdep.mds.xsd'>
+	<CONFIGURATION_PHASE>CDEPlatform</CONFIGURATION_PHASE>
+	<MDS>
+		<FILE_TRANSFER_PROTOCOL_WITH_DB_NODES>SFTP</FILE_TRANSFER_PROTOCOL_WITH_DB_NODES>
+		<USE_NEW_GANGLIA>no</USE_NEW_GANGLIA>
+		<OBS_WITH_GANGLIA>yes</OBS_WITH_GANGLIA>
+		<USE_GANGLIA>yes</USE_GANGLIA>
+		<INSTALL_GANGLIA>yes</INSTALL_GANGLIA>
+		<RcmdProtocol>ssh</RcmdProtocol>
+		<TRACE_DESTINATION>BOTH</TRACE_DESTINATION>
+		<TRACE_SYSLOG_FACILITY>LOG_LOCAL1</TRACE_SYSLOG_FACILITY>
+		<TRACE_SYSLOG_PRIORITY>LOG_CRIT</TRACE_SYSLOG_PRIORITY>
+		<DDM_OBS_XML_FILE>/etc/nectar/oam/obs/xml/mds_obs.xml</DDM_OBS_XML_FILE>
+		<DDM_MONITOR_FILE>/usr/dhafw/data/ddmonitor/ddmonitor.input</DDM_MONITOR_FILE>
+		<enableMCASreports>true</enableMCASreports>
+		<compact_legacy>false</compact_legacy>
+		<CALL_IP_TABLES>yes</CALL_IP_TABLES>
+		<CALL_ConfigIpTables>false</CALL_ConfigIpTables>
+		<IPERF_PORT>5001</IPERF_PORT>
+		<USE_MCAS_ALARM_LOG>true</USE_MCAS_ALARM_LOG>
+		<CORE_PARTITION_FOR_DISKLESS>/sdmcore</CORE_PARTITION_FOR_DISKLESS>
+		<PROCESS_SCHED_POLICY>TIME_SHARING</PROCESS_SCHED_POLICY>
+		<SYSTEM_PREFIX>ATCA33</SYSTEM_PREFIX>
+		<NAME_FIRST_PILOT_STATION>ATCA33-0-0-1</NAME_FIRST_PILOT_STATION>
+		<NAME_SECOND_PILOT_STATION>ATCA33-0-0-9</NAME_SECOND_PILOT_STATION>
+		<Platform>
+			<CONFIGURATION>other</CONFIGURATION>
+			<DATA_CENTER_ZONE>1</DATA_CENTER_ZONE>
+			<HARDWARE>ATCA_V2</HARDWARE>
+			<TYPE>FRONTEND</TYPE>
+			<IPVERSION>IPV4</IPVERSION>
+		</Platform>
+		<MatedPair>
+			<Local>
+				<hostname>ATCA33</hostname>
+				<ip>135.252.182.148</ip>
+			</Local>
+			<MATED_PAIR_MODE>1430-FE</MATED_PAIR_MODE>
+		</MatedPair>
+		<Fe>
+			<FRONT_END_ID>135.252.182.148</FRONT_END_ID>
+			<MATED_GMPS_HOSTNAME ID='1' zone='1'>
+				<ip>192.168.30.20</ip>
+			</MATED_GMPS_HOSTNAME>
+			<MATED_GMPS_HOSTNAME ID='2' zone='2'>
+				<ip>192.168.34.20</ip>
+			</MATED_GMPS_HOSTNAME>
+		</Fe>
+		<GDMP_CLIENTS>
+			<CLIENT station='STATION_A'>
+				<ip>192.168.33.1</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+			</CLIENT>
+			<CLIENT station='STATION_B'>
+				<ip>192.168.33.9</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+			</CLIENT>
+			<CLIENT station='STATION_C'>
+				<ip>192.168.33.10</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>3</StationRank>
+				<AllowedServerRanks>3,6,7,8</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_D'>
+				<ip>192.168.33.2</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>4</StationRank>
+				<AllowedServerRanks>4,7,8,9</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_E'>
+				<ip>192.168.33.11</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>5</StationRank>
+				<AllowedServerRanks>5,8,9,10</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_F'>
+				<ip>192.168.33.3</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>6</StationRank>
+				<AllowedServerRanks>6,9,10,11</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_G'>
+				<ip>192.168.33.12</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>7</StationRank>
+				<AllowedServerRanks>7,10,11,12</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_H'>
+				<ip>192.168.33.4</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>8</StationRank>
+				<AllowedServerRanks>8,11,12,3</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_I'>
+				<ip>192.168.33.13</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>9</StationRank>
+				<AllowedServerRanks>9,12,3,4</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_J'>
+				<ip>192.168.33.5</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>10</StationRank>
+				<AllowedServerRanks>10,3,4,5</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_K'>
+				<ip>192.168.33.14</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>11</StationRank>
+				<AllowedServerRanks>11,4,5,6</AllowedServerRanks>
+			</CLIENT>
+			<CLIENT station='STATION_L'>
+				<ip>192.168.33.6</ip>
+				<NbReplyThreads>25</NbReplyThreads>
+				<StationZone>1</StationZone>
+				<GateManagerVersion>3</GateManagerVersion>
+				<StationRank>12</StationRank>
+				<AllowedServerRanks>12,5,6,7</AllowedServerRanks>
+			</CLIENT>
+		</GDMP_CLIENTS>
+	</MDS>
+</NCO>

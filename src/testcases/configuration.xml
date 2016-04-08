@@ -1,0 +1,3698 @@
+<?xml version="1.0"?>
+<configuration xmlns="http://www.alcatel-lucent.com/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.alcatel-lucent.com/ configuration.xsd">
+	<accounts>
+		<account type="LAB-DEFAULT" user="root" password="r00t" />
+		<account type="LAB-DEFAULT-Primary" user="ainet" password="ainet1" />
+		<account type="LAB-NX-Primary" user="nxuser" password="nxuser" />
+		<account type="LN-PCLAB" user="root" password="alcatel_01" />
+		<account type="LN-PCLAB1" user="root" password="alcatelr422" />
+		<account type="BJ-PCLAB" user="root" password="sdm*8650" />
+		<account type="LN-Spectra2" user="automation_team" password="jenkins" />
+		<account type="bic_guest" user="bic_guest" password="bic_guest" />
+		<account type="LNHP37-traffic" user="nxuser" password="nxuser" />
+		<account type="LN-ROUTER-ADMLAB-1" user="admlab" password="Switch_01" />
+		<account type="LN-ROUTER-ADMIN-1" user="admin" password="switch_01" />
+		<account type="QIPTOOL-BULK" user="admin_root" password="admin_root" />
+	</accounts>
+	<testEnvs>
+
+		<testEnv id="BJ-ROUZIC-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="ATCA08">
+					<host>135.252.182.73</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="ATCA20">
+					<host>135.252.182.36</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="ATCA16">
+					<host>135.252.182.106</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="ATCA25">
+					<host>135.252.182.154</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="ATCA10">
+					<host>135.252.182.55</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="ATCA44">
+					<host>135.252.182.28</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning>
+					<jmeter>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</jmeter>
+					<qiptool>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</qiptool>
+				</provisioning>
+				<telecom>
+					<sigtran>
+						<mistral>
+							<simulator>
+								<host>135.252.182.200</host>
+								<account>LN-PCLAB</account>
+								<mistralIp>172.25.192.161</mistralIp>
+							</simulator>
+						</mistral>
+						<spectra>
+							<simulator>
+								<host>135.252.194.148</host>
+								<account>LN-PCLAB</account>
+								<ftpAccount>bic_guest</ftpAccount>
+								<workspace></workspace>
+							</simulator>
+						</spectra>
+					</sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>135.252.181.42</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+							<simulator>
+								<host>135.252.181.43</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx03si9</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>0</server>
+							</simulator>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_OAM</application>
+								<server>0</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BJ-ROUZIC-big">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="ATCA55">
+					<host>135.251.81.226</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="ATCA58">
+					<host>135.252.182.177</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="ATCA57">
+					<host>135.252.182.124</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning>
+					<jmeter>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</jmeter>
+					<qiptool>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</qiptool>
+				</provisioning>
+				<telecom>
+					<sigtran>
+						<mistral>
+							<simulator>
+								<host>135.252.182.200</host>
+								<account>LN-PCLAB</account>
+								<mistralIp>172.25.192.161</mistralIp>
+							</simulator>
+						</mistral>
+						<spectra>
+							<simulator>
+								<host>135.252.194.148</host>
+								<account>LN-PCLAB</account>
+								<ftpAccount>bic_guest</ftpAccount>
+								<workspace></workspace>
+							</simulator>
+						</spectra>
+					</sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>135.252.181.42</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+							<simulator>
+								<host>135.252.181.43</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx03si9</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>0</server>
+							</simulator>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_OAM</application>
+								<server>0</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BJ-ROUZIC-3">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="ATCA11">
+					<host>135.252.182.58</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="ATCA03">
+					<host>135.251.81.135</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="ATCA04">
+					<host>135.251.81.138</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran></sigtran>
+					<diameter></diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BJ-BONO-5">
+			<testBed>
+				<lab id="BJBONO06">
+					<host>135.251.83.36</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO07">
+					<host>135.251.83.39</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO10">
+					<host>135.251.83.55</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO11">
+					<host>135.251.83.65</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO13">
+					<host>135.251.83.81</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran></sigtran>
+					<diameter></diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<testEnv id="BJ-BONO-1">
+			<testBed>
+				<!-- FEs -->
+				<lab id="BJBONO023">
+					<host>135.251.83.10</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO27">
+					<host>135.251.83.105</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJBONO25">
+					<host>135.251.83.73</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO26">
+					<host>135.251.83.89</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO28">
+					<host>135.251.83.243</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="BJBONO24">
+					<host>135.251.83.25</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJBONO05">
+					<host>135.251.83.33</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran></sigtran>
+					<diameter></diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<testEnv id="BJ-HPG8-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="BJHP02">
+					<host>135.252.194.4</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="BJHP03">
+					<host>135.252.194.7</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJHP07">
+					<host>135.252.194.19</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP16">
+					<host>135.252.194.86</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<testEnv id="BJ-HPG8-2">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="BJHP29">
+					<host>135.252.194.161</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJHP17">
+					<host>135.252.194.89</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP18">
+					<host>135.252.194.92</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<testEnv id="BJ-HPG6-3">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="BJHP25">
+					<host>135.252.194.129</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJHP13">
+					<host>135.252.194.77</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="BJHP01">
+					<host>135.252.194.1</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE or BE ? under install <lab id="BJHP24"> <host>135.252.194.113</host> 
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount> <rootAccount>LAB-DEFAULT</rootAccount> 
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount> </lab> -->
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<testEnv id="BJ-HPG6-4">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="BJHP27">
+					<host>135.252.194.135</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJHP28">
+					<host>135.252.194.138</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<testEnv id="BJ-HPG8-5">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="BJHP35">
+					<host>135.252.194.179</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="BJHP36">
+					<host>135.252.194.182</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- PFE -->
+				<lab id="BJHP34">
+					<host>135.252.194.176</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJHP30">
+					<host>135.252.194.164</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP31">
+					<host>135.252.194.167</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="BJHP32">
+					<host>135.252.194.170</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP33">
+					<host>135.252.194.173</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+
+		<!-- was previously BJ-HP-2 -->
+		<testEnv id="BJ-HPG6-6">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="BJHP05">
+					<host>135.252.194.13</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="BJHP06">
+					<host>135.252.194.16</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP08">
+					<host>135.252.194.22</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="BJHP14">
+					<host>135.252.194.80</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning>
+					<jmeter>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</jmeter>
+					<qiptool>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</qiptool>
+				</provisioning>
+				<telecom>
+					<sigtran>
+						<mistral>
+							<simulator>
+								<host>135.252.182.199</host>
+								<account>LN-PCLAB</account>
+								<mistralIp>172.25.192.162</mistralIp>
+							</simulator>
+						</mistral>
+						<spectra>
+							<simulator>
+								<host>135.252.194.149</host>
+								<account>LN-PCLAB</account>
+								<ftpAccount>bic_guest</ftpAccount>
+								<workspace></workspace>
+							</simulator>
+						</spectra>
+					</sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>135.252.181.42</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BJ-HPG8-7">
+			<testBed>
+				<!-- FE -->
+				<lab id="BJHP20">
+					<host>135.252.194.98</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP21">
+					<host>135.252.194.101</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP22">
+					<host>135.252.194.104</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BJ-HPG6-8">
+			<testBed>
+				<!-- FE -->
+				<lab id="BJHP09">
+					<host>135.252.194.65</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP10">
+					<host>135.252.194.68</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP11">
+					<host>135.252.194.71</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP12">
+					<host>135.252.194.74</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP15">
+					<host>135.252.194.83</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="BJHP19">
+					<host>135.252.194.95</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BJ-ROUZIC-2">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="ATCA27">
+					<host>135.251.83.188</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="ATCA26">
+					<host>135.251.83.185</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- <lab id="ATCA48"> <host>135.252.182.81</host> <primaryAccount>LAB-DEFAULT-Primary</primaryAccount> 
+					<rootAccount>LAB-DEFAULT</rootAccount> <provisioningAccount>QIPTOOL-BULK</provisioningAccount> 
+					</lab> -->
+			</testBed>
+			<trafficSimulators>
+				<provisioning>
+					<jmeter>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</jmeter>
+					<qiptool>
+						<simulator>
+							<host>135.252.181.42</host>
+							<account>LN-PCLAB</account>
+						</simulator>
+					</qiptool>
+				</provisioning>
+				<telecom>
+					<sigtran>
+						<mistral>
+							<simulator>
+								<host>135.252.182.199</host>
+								<account>LN-PCLAB</account>
+								<mistralIp>172.25.192.162</mistralIp>
+							</simulator>
+						</mistral>
+						<spectra>
+							<simulator>
+								<host>135.252.194.149</host>
+								<account>LN-PCLAB</account>
+								<ftpAccount>bic_guest</ftpAccount>
+								<workspace></workspace>
+							</simulator>
+						</spectra>
+					</sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>135.252.181.42</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-ROUZIC-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA204">
+					<host>172.25.228.33</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA202">
+					<host>172.25.228.17</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx02si2</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-ROUZIC-2">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA79">
+					<host>172.25.201.153</host>
+					<connection>
+						<routerId>LN-ROUTER-1</routerId>
+						<flow>GDMP</flow>
+						<vlan>11</vlan>
+						<interface>1</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA82">
+					<host>172.25.201.162</host>
+					<connection>
+						<routerId>LN-ROUTER-1</routerId>
+						<flow>GDMP</flow>
+						<vlan>21</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA87">
+					<host>172.25.201.177</host>
+					<connection>
+						<routerId>LN-ROUTER-1</routerId>
+						<flow>GDMP</flow>
+						<vlan>31</vlan>
+						<interface>5</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="SPA230">
+					<host>172.25.201.193</host>
+					<connection>
+						<routerId>LN-ROUTER-1</routerId>
+						<flow>GDMP</flow>
+						<vlan>41</vlan>
+						<interface>7</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx03si3</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-ROUZIC-3">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA59">
+					<host>172.25.206.58</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA203">
+					<host>172.25.228.25</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="SPA205">
+					<host>172.25.228.41</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter />
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-BONO-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA46">
+					<host>172.25.206.19</host>
+					<connection>
+						<!-- router info is not the good one (not available at the moment. 
+							So values set just for testing purpose -->
+						<routerId>LN-ROUTER-18</routerId>
+						<flow>GDMP</flow>
+						<vlan>41</vlan>
+						<interface>7</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="SPA48">
+					<host>172.25.206.25</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA102">
+					<host>172.25.195.145</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA103">
+					<host>172.25.195.153</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- Removed due to instability (mysql pb : missing memory -> database 
+					synchro pb) <lab id="SPA101"> <host>172.25.195.137</host> </lab> -->
+				<!-- NRG2 -->
+				<lab id="SPA40">
+					<host>172.25.206.1</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA106">
+					<host>172.25.195.177</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- Remove since it has not been Su'ed -->
+				<!-- <lab id="SPA104"> <host>172.25.195.161</host> </lab> -->
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran>
+						<spectra>
+							<simulator>
+								<host>172.25.203.100</host>
+								<account>LN-Spectra2</account>
+								<ftpAccount>bic_guest</ftpAccount>
+								<workspace>0.m3ua_ITU_ASSG_FE1_SPA46_With_EIR_MNP_AllLab_2NRGPCSSN.ctr</workspace>
+							</simulator>
+						</spectra>
+					</sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx03si8</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx03si8</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>28</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-BONO-2">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA13">
+					<host>172.25.203.161</host>
+					<connection>
+						<routerId>LN-ROUTER-4</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-4</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>14</vlan>
+						<interface>5</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-4</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>15</vlan>
+						<interface>6</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA11">
+					<host>172.25.203.145</host>
+					<connection>
+						<routerId>LN-ROUTER-5</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>23</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA12">
+					<host>172.25.203.153</host>
+					<connection>
+						<routerId>LN-ROUTER-6</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>23</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="SPA09">
+					<host>172.25.203.129</host>
+					<connection>
+						<routerId>LN-ROUTER-4</routerId>
+						<flow>GDMP</flow>
+						<vlan>22</vlan>
+						<interface>23</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx03si1</host>
+								<account>LN-PCLAB</account>
+								<application>HSS</application>
+								<transport>TCP</transport>
+							</simulator>
+							<simulator>
+								<host>lalx02si2</host>
+								<account>LN-PCLAB</account>
+								<application>LTE</application>
+								<transport>all</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>131</server>
+							</simulator>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_OAM</application>
+								<server>132</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG6-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="hp33">
+					<host>172.25.196.153</host>
+					<connection>
+						<routerId>LN-ROUTER-10</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>9</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-10</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>24</vlan>
+						<interface>11</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-10</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>25</vlan>
+						<interface>12</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="hp30">
+					<host>172.25.196.129</host>
+					<connection>
+						<routerId>LN-ROUTER-10</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="hp31">
+					<host>172.25.196.137</host>
+					<connection>
+						<routerId>LN-ROUTER-11</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="hp32">
+					<host>172.25.196.145</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx03si2</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx03si2</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>33</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA19">
+					<host>172.25.204.169</host>
+					<connection>
+						<routerId>LN-ROUTER-8</routerId>
+						<flow>GDMP</flow>
+						<vlan>32</vlan>
+						<interface>11</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-8</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>35</vlan>
+						<interface>14</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-8</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>37</vlan>
+						<interface>16</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="SPA14">
+					<host>172.25.203.169</host>
+					<connection>
+						<routerId>LN-ROUTER-7</routerId>
+						<flow>GDMP</flow>
+						<vlan>32</vlan>
+						<interface>11</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-7</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>35</vlan>
+						<interface>14</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-7</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>37</vlan>
+						<interface>16</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA01">
+					<host>172.25.203.193</host>
+					<connection>
+						<routerId>LN-ROUTER-7</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA05">
+					<host>172.25.203.225</host>
+					<connection>
+						<routerId>LN-ROUTER-9</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="SPA02">
+					<host>172.25.203.201</host>
+					<connection>
+						<routerId>LN-ROUTER-7</routerId>
+						<flow>GDMP</flow>
+						<vlan>22</vlan>
+						<interface>7</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA04">
+					<host>172.25.203.217</host>
+					<connection>
+						<routerId>LN-ROUTER-8</routerId>
+						<flow>GDMP</flow>
+						<vlan>22</vlan>
+						<interface>7</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA18">
+					<host>172.25.204.185</host>
+					<connection>
+						<routerId>LN-ROUTER-9</routerId>
+						<flow>GDMP</flow>
+						<vlan>22</vlan>
+						<interface>7</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalxmdspc100</host>
+								<account>LN-PCLAB</account>
+								<application>HSS</application>
+								<transport>TCP</transport>
+							</simulator>
+							<simulator>
+								<host>lalx02si2</host>
+								<account>LN-PCLAB</account>
+								<application>LTE</application>
+								<transport>all</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-2">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="SPA10">
+					<host>172.25.203.137</host>
+					<connection>
+						<routerId>LN-ROUTER-3</routerId>
+						<flow>GDMP</flow>
+						<vlan>32</vlan>
+						<interface>11</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-3</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>35</vlan>
+						<interface>14</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-3</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>34</vlan>
+						<interface>13</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="SPA06">
+					<host>172.25.203.233</host>
+					<connection>
+						<routerId>LN-ROUTER-2</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="SPA07">
+					<host>172.25.203.241</host>
+					<connection>
+						<routerId>LN-ROUTER-3</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>3</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="SPA08">
+					<host>172.25.203.249</host>
+					<connection>
+						<routerId>LN-ROUTER-3</routerId>
+						<flow>GDMP</flow>
+						<vlan>22</vlan>
+						<interface>7</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx02si2</host>
+								<account>LN-PCLAB</account>
+								<application>LTE</application>
+								<transport>SCTP</transport>
+							</simulator>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>HSS</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>1000</server>
+							</simulator>
+							<simulator>
+								<host>lalx03si7</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_OAM</application>
+								<server>1001</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-3">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="HP07">
+					<host>172.25.235.49</host>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>GDMP</flow>
+						<vlan>151</vlan>
+						<interface>12</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>155</vlan>
+						<interface>15</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>153</vlan>
+						<interface>13</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="HP08">
+					<host>172.25.235.57</host>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>GDMP</flow>
+						<vlan>151</vlan>
+						<interface>12</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>155</vlan>
+						<interface>15</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>153</vlan>
+						<interface>13</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="HP01">
+					<host>172.25.235.1</host>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>GDMP</flow>
+						<vlan>51</vlan>
+						<interface>3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>REP</flow>
+						<vlan>52</vlan>
+						<interface>4</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP02">
+					<host>172.25.235.9</host>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>GDMP</flow>
+						<vlan>51</vlan>
+						<interface>3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>REP</flow>
+						<vlan>52</vlan>
+						<interface>4</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP03">
+					<host>172.25.235.17</host>
+					<connection>
+						<routerId>LN-ROUTER-17</routerId>
+						<flow>GDMP</flow>
+						<vlan>51</vlan>
+						<interface>3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-17</routerId>
+						<flow>REP</flow>
+						<vlan>52</vlan>
+						<interface>4</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="HP04">
+					<host>172.25.235.25</host>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>GDMP</flow>
+						<vlan>101</vlan>
+						<interface>7</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-15</routerId>
+						<flow>REP</flow>
+						<vlan>102</vlan>
+						<interface>8</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP05">
+					<host>172.25.235.33</host>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>GDMP</flow>
+						<vlan>101</vlan>
+						<interface>7</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-16</routerId>
+						<flow>REP</flow>
+						<vlan>102</vlan>
+						<interface>8</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP06">
+					<host>172.25.235.41</host>
+					<connection>
+						<routerId>LN-ROUTER-17</routerId>
+						<flow>GDMP</flow>
+						<vlan>101</vlan>
+						<interface>7</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-17</routerId>
+						<flow>REP</flow>
+						<vlan>102</vlan>
+						<interface>8</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx05si1</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+						<!-- lalx02si2 to be added as 2nd ptool -->
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-4">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="HP16">
+					<host>172.25.235.121</host>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>GDMP</flow>
+						<vlan>1151</vlan>
+						<interface>31</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>1153</vlan>
+						<interface>33</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>1155</vlan>
+						<interface>35</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="HP17">
+					<host>172.25.235.129</host>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>GDMP</flow>
+						<vlan>1151</vlan>
+						<interface>31</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>1153</vlan>
+						<interface>33</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>1155</vlan>
+						<interface>35</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="HP10">
+					<host>172.25.235.73</host>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>GDMP</flow>
+						<vlan>1051</vlan>
+						<interface>23</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>REP</flow>
+						<vlan>1052</vlan>
+						<interface>24</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP11">
+					<host>172.25.235.81</host>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>GDMP</flow>
+						<vlan>1051</vlan>
+						<interface>23</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>REP</flow>
+						<vlan>1052</vlan>
+						<interface>24</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP12">
+					<host>172.25.235.89</host>
+					<connection>
+						<routerId>LN-ROUTER-14</routerId>
+						<flow>GDMP</flow>
+						<vlan>1051</vlan>
+						<interface>23</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-14</routerId>
+						<flow>REP</flow>
+						<vlan>1052</vlan>
+						<interface>24</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<lab id="HP13">
+					<host>172.25.235.97</host>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>GDMP</flow>
+						<vlan>1101</vlan>
+						<interface>27</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-12</routerId>
+						<flow>REP</flow>
+						<vlan>1102</vlan>
+						<interface>28</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP14">
+					<host>172.25.235.105</host>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>GDMP</flow>
+						<vlan>1102</vlan>
+						<interface>27</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-13</routerId>
+						<flow>REP</flow>
+						<vlan>1102</vlan>
+						<interface>28</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP15">
+					<host>172.25.235.113</host>
+					<connection>
+						<routerId>LN-ROUTER-14</routerId>
+						<flow>GDMP</flow>
+						<vlan>1101</vlan>
+						<interface>27</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-14</routerId>
+						<flow>REP</flow>
+						<vlan>1102</vlan>
+						<interface>28</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx05si1</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+						<!-- lalx02si2 to be added as 2nd ptool -->
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-5">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="LNHP21">
+					<host>172.25.235.161</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP22">
+					<host>172.25.235.169</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP26">
+					<host>172.25.235.201</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP25">
+					<host>172.25.235.193</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP24">
+					<host>172.25.235.185</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP23">
+					<host>172.25.235.177</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-7">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="HP37">
+					<host>172.25.196.185</host>
+					<connection>
+						<routerId>LN-ROUTER-21</routerId>
+						<flow>GDMP</flow>
+						<vlan>37</vlan>
+						<interface>1/3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-21</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>24</vlan>
+						<interface>1/9</interface>
+					</connection>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="HP36">
+					<host>172.25.196.177</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP35">
+					<host>172.25.196.169</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG2 -->
+				<!-- <lab id="HP34"> <host>172.25.196.161</host> <primaryAccount>LAB-DEFAULT-Primary</primaryAccount> 
+					<rootAccount>LAB-DEFAULT</rootAccount> <provisioningAccount>QIPTOOL-BULK</provisioningAccount> 
+					</lab> <lab id="BE252"> <host>172.25.196.57</host> <primaryAccount>LAB-DEFAULT-Primary</primaryAccount> 
+					<rootAccount>LAB-DEFAULT</rootAccount> <provisioningAccount>QIPTOOL-BULK</provisioningAccount> 
+					</lab> -->
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalxmdspc100</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>all</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-HPG8-8">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="HP18">
+					<host>172.25.235.137</host>
+					<!-- All connections are Fe side -->
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>1/3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>SIGTRAN</flow>
+						<vlan>34</vlan>
+						<interface>1/13</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>LDAP</flow>
+						<vlan>33</vlan>
+						<interface>1/12</interface>
+					</connection>
+					<!-- HSS -->
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>35</vlan>
+						<interface>1/14</interface>
+					</connection>
+					<!-- LTE -->
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>DIAMETER</flow>
+						<vlan>36</vlan>
+						<interface>1/15</interface>
+					</connection>
+					<primaryAccount>LAB-NX-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="HP40">
+					<host>172.25.235.233</host>
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>GDMP</flow>
+						<vlan>22</vlan>
+						<interface>1/7</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>REP</flow>
+						<vlan>23</vlan>
+						<interface>1/8</interface>
+					</connection>
+					<primaryAccount>LAB-NX-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="HP43">
+					<host>172.25.234.49</host>
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>GDMP</flow>
+						<vlan>12</vlan>
+						<interface>1/3</interface>
+					</connection>
+					<connection>
+						<routerId>LN-ROUTER-20</routerId>
+						<flow>REP</flow>
+						<vlan>13</vlan>
+						<interface>1/4</interface>
+					</connection>
+					<primaryAccount>LAB-NX-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran>
+						<spectra>
+							<simulator>
+								<host>172.25.210.32</host>
+								<account>LN-Spectra2</account>
+								<ftpAccount>bic_guest</ftpAccount>
+								<workspace>0.m3ua_ITU_ASSG_FE1_HP18_With_EIR_without_MNP_1NRGPCSSN.ctr</workspace>
+							</simulator>
+						</spectra>
+					</sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>lalx05si1</host>
+								<account>LN-PCLAB1</account>
+								<application>all</application>
+								<transport>all</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>lalx05si1</host>
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>400</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G8-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="v8650-FE1-ST">
+					<host>172.25.234.203</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="v8650-FE2-ST">
+					<host>172.25.234.235</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="v8650-BE1-ST">
+					<host>172.25.234.206</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="v8650-BE2-ST">
+					<host>172.25.234.238</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.210.33</host> <!--lalx05si4 -->
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>172.25.210.33</host> <!--lalx05si4 -->
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>33</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G9-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="v8650-FE1">
+					<host>172.25.234.131</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 <lab id="v8650-FE2"> <host>172.25.234.171</host> <primaryAccount>LAB-DEFAULT-Primary</primaryAccount> 
+					<rootAccount>LAB-DEFAULT</rootAccount> <provisioningAccount>QIPTOOL-BULK</provisioningAccount> 
+					</lab> Not used due to installation issues -->
+				<!-- NRG1 -->
+				<lab id="v8650-BE1">
+					<host>172.25.234.134</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="v8650-BE2">
+					<host>172.25.234.150</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.210.33</host> <!--lalx05si4 -->
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>172.25.210.33</host> <!--lalx05si4 -->
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>0</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="BD-V8650-G8-1">
+			<testBed>
+				<!-- FE1 -->
+				<lab id="v8650-zzfe1p">
+					<host>135.248.226.79</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- FE2 -->
+				<lab id="v8650-zzfe2p">
+					<host>135.248.226.78</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- NRG1 -->
+				<lab id="v8650-zzbe1p">
+					<host>135.248.226.244</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="v8650-zzbe2p">
+					<host>135.248.226.161</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>135.248.226.179</host> <!-- loadgen04 -->
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+					<ldap>
+						<tgen>
+							<simulator>
+								<host>135.248.226.179</host> <!-- loadgen04 -->
+								<account>LN-PCLAB</account>
+								<application>AAA_User</application>
+								<server>0</server>
+							</simulator>
+						</tgen>
+					</ldap>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LNconf3">
+			<testBed>
+				<lab id="LNHP37">
+					<host>172.25.196.185</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP35">
+					<host>172.25.196.169</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP36">
+					<host>172.25.296.177</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP34">
+					<host>172.25.196.161</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="LNHP252">
+					<host>172.25.196.57</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran></sigtran>
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.196.185</host>
+								<account>LNHP37-traffic</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G8-dev-2">
+			<testBed>
+				<!-- FE -->
+				<lab id="v8650-dev2-FE2">
+					<host>172.25.241.149</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-dev2-BE2">
+					<host>172.25.241.152</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning />
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.241.100</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G8-dev-7">
+			<testBed>
+				<!-- FE -->
+				<lab id="v8650-dev7-FE7">
+					<host>172.25.234.107</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-dev7-BE7">
+					<host>172.25.234.110</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.210.22</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G8-dev-8">
+			<testBed>
+				<!-- FE -->
+				<lab id="v8650-dev8-FE8">
+					<host>172.25.234.119</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-dev8-BE8">
+					<host>172.25.234.122</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.210.22</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G8-dev-3-4">
+			<testBed>
+				<!-- FE -->
+				<lab id="v8650-dev3-FE1">
+					<host>172.25.241.171</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="v8650-dev4-FE1">
+					<host>172.25.241.183</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-dev3-BE1">
+					<host>172.25.241.174</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="v8650-dev4-BE1">
+					<host>172.25.241.186</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.241.100</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-G8-dev-7-8">
+			<testBed>
+				<!-- FE -->
+				<lab id="v8650-dev78-FE8">
+					<host>172.25.234.119</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="v8650-dev78-FE7">
+					<host>172.25.234.107</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-dev78-BE8">
+					<host>172.25.234.122</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-dev78-BE7">
+					<host>172.25.234.110</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.210.22</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>TCP</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="IH-BONO-1">
+			<testBed>
+				<!-- FE -->
+				<lab id="IHATCA26">
+					<host>135.1.101.179</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHATCA33">
+					<host>135.1.240.3</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHATCA35">
+					<host>135.1.240.19</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHATCA34">
+					<host>135.1.240.11</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHATCA36">
+					<host>135.1.240.27</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="IH-HP-1">
+			<testBed>
+				<!-- FE -->
+				<lab id="IHHP20">
+					<host>135.1.206.67</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP22">
+					<host>135.1.206.83</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP21">
+					<host>135.1.206.75</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP23">
+					<host>135.1.206.91</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="IH-HPG6-2">
+			<testBed>
+				<!-- FE -->
+				<lab id="IHHP01">
+					<host>135.1.77.99</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP15">
+					<host>135.1.95.251</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP03">
+					<host>135.1.77.163</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP13">
+					<host>135.1.95.235</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP04">
+					<host>135.1.77.179</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP14">
+					<host>135.1.95.243</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="IH-HP-3">
+			<testBed>
+				<!-- FE -->
+				<lab id="IHHP16">
+					<host>135.1.102.131</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP18">
+					<host>135.1.102.139</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP17">
+					<host>135.1.102.227</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHHP19">
+					<host>135.1.102.235</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="IH-V8650-1">
+			<testBed>
+				<!-- FE -->
+				<lab id="IHV865001">
+					<host>135.1.242.103</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHV865002">
+					<host>135.1.242.106</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHV865003">
+					<host>135.111.71.153</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<lab id="IHV865004">
+					<host>135.111.71.156</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+		<testEnv id="LN-V8650-FUZZ">
+			<testBed>
+				<!-- FE -->
+				<lab id="v8650-FUZZ-FE1">
+					<host>172.26.12.11</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+				<!-- BE -->
+				<lab id="v8650-FUZZ-BE1">
+					<host>172.26.12.14</host>
+					<primaryAccount>LAB-DEFAULT-Primary</primaryAccount>
+					<rootAccount>LAB-DEFAULT</rootAccount>
+					<provisioningAccount>QIPTOOL-BULK</provisioningAccount>
+				</lab>
+			</testBed>
+			<trafficSimulators>
+				<provisioning></provisioning>
+				<telecom>
+					<sigtran />
+					<diameter>
+						<ptool>
+							<simulator>
+								<host>172.25.210.21</host>
+								<account>LN-PCLAB</account>
+								<application>all</application>
+								<transport>all</transport>
+							</simulator>
+						</ptool>
+					</diameter>
+				</telecom>
+			</trafficSimulators>
+		</testEnv>
+	</testEnvs>
+	<trafficProfiles>
+		<trafficProfile id="v8650">
+			<!-- Traffic is linked to LN-V8650-G8-dev-2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG1.500TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>500</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="v8650_standard">
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.orange.xml.NRG1.500TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>500</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.orange.xml.NRG1.738TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>500</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="full_standard">
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG1.4000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>4000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG2.4000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>4000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.4000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>4000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.4000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>4000</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="light">
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.alu.xml.lte.NRG1.1000TPS</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<tgen>
+				<scenario>404</scenario>
+				<tps>1000</tps>
+				<threads>100</threads>
+				<application>AAA_User</application>
+			</tgen>
+		</trafficProfile>
+		<trafficProfile id="standard_bono_1FE">
+			<!-- LTE NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.xml.lte.NRG1.2200TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2200</tps>
+			</ptool>
+			<!-- LTE NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.xml.lte.NRG2.2200TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2200</tps>
+			</ptool>
+			<!-- HSS NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.2000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2000</tps>
+			</ptool>
+			<!-- HSS NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.2000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2000</tps>
+			</ptool>
+			<tgen>
+				<scenario>404</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_User</application>
+			</tgen>
+			<tgen>
+				<scenario>403</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_OAM</application>
+			</tgen>
+		</trafficProfile>
+		<trafficProfile id="standard_hp_1FE">
+			<!-- LTE NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.xml.lte.NRG1.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<!-- LTE NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.xml.lte.NRG2.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<!-- HSS NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<!-- HSS NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<tgen>
+				<scenario>404</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_User</application>
+			</tgen>
+			<tgen>
+				<scenario>403</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_OAM</application>
+			</tgen>
+		</trafficProfile>
+		<trafficProfile id="standard_hp_1FE_1NRG_no_spectra">
+			<!-- LTE NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.xml.lte.NRG1.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<!-- HSS NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<tgen>
+				<scenario>402</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_User</application>
+			</tgen>
+		</trafficProfile>
+		<trafficProfile id="standard_hp_1FE_1NRG_full">
+			<spectra>
+				<model>ALU-PureHLR</model>
+				<!-- tps is not used for the moment, tps for spectra can only be modified 
+					using spectra client (field CPS) -->
+				<tps>13000</tps>
+			</spectra>
+			<!-- LTE NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.xml.lte.NRG1.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<!-- HSS NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.7000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>7000</tps>
+			</ptool>
+			<tgen>
+				<scenario>402</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_User</application>
+			</tgen>
+		</trafficProfile>
+		<trafficProfile id="standard_bono_2FE">
+			<spectra>
+				<model>ALU-PureHLR</model>
+				<!-- tps is not used for the moment, tps for spectra can only be modified 
+					using spectra client (field CPS) -->
+				<tps>13000</tps>
+			</spectra>
+			<!-- LTE NRG1-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG1.400TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- LTE NRG2-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG2.400TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- LTE NRG1-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG1.400TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- LTE NRG2-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG2.400TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- HSS NRG1-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.800TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>800</tps>
+			</ptool>
+			<!-- HSS NRG2-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.800TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>800</tps>
+			</ptool>
+			<!-- HSS NRG1-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.800TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>800</tps>
+			</ptool>
+			<!-- HSS NRG2-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.800TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>800</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="standard_bono_2FE_no_spectra">
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG1.400TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- LTE NRG2-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG2.400TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- LTE NRG1-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG1.400TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- LTE NRG2-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.lte.NRG2.400TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>400</tps>
+			</ptool>
+			<!-- HSS NRG1-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.800TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>800</tps>
+			</ptool>
+			<!-- HSS NRG2-FE1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.800TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>800</tps>
+			</ptool>
+			<!-- HSS NRG1-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG1.800TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>800</tps>
+			</ptool>
+			<!-- HSS NRG2-FE2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.NRG2.800TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>800</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="test">
+			<spectra>
+				<model>ALU-PureHLR</model>
+				<!-- tps is not used for the moment, tps for spectra can only be modified 
+					using spectra client (field CPS) -->
+				<tps>13000</tps>
+			</spectra>
+		</trafficProfile>
+		<trafficProfile id="bj-test-hp25">
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenraio.xml.NRG1.1000TPS.2</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenraio.xml.lte.NRG1.1000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="bj-test-hp27">
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenraio.xml.NRG1.1000TPS.2</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenraio.xml.lte.NRG1.1000TPS.1</scenario>
+				<FE_Key>2</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="bj-test-bjhp05">
+			<!-- NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenraio.alu.xml.NRG1.2000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.vfuk.lte.NRG1.5000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>5000</tps>
+			</ptool>
+			<!-- NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenraio.alu.xml.NRG2.3000TPS.hp05.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>3000</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.vfuk.lte.NRG2.5000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>5000</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="bj-hp-3">
+			<ptool>
+				<ptool_dir>/local/haijiez/R44/Diameter_Vzw_TwinIMSI/HP25/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>HPG6_scenraio.xml.vzw440.lte.NRG1.2296TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2296</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/haijiez/R44/Diameter_Vzw_TwinIMSI/HP25/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>HPG6_scenraio.xml.vzw440.lte.NRG2.2296TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>2296</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/haijiez/R44/Diameter_Vzw_TwinIMSI/HP25/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>HPG6_scenario.xml.vzw440.NRG1.1874TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1874</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/haijiez/R44/Diameter_Vzw_TwinIMSI/HP25/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>HPG6_scenario.xml.vzw440.NRG2.1874TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1874</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="bj-hp-4">
+			<ptool>
+				<ptool_dir>/local/haijiez/R44/Diameter_Vzw_TwinIMSI/HP27/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>HPG6_scenraio.xml.vzw440.lte.NRG1.4593TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>4593</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/haijiez/R44/Diameter_Vzw_TwinIMSI/HP27/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>HPG6_scenario.xml.vzw440.NRG1.3749TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>3749</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="vdf_uk_150_200_TPS">
+			<!-- Profile available for LN Rouzic 2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.VF-UK.xml.lte.NRG1.150TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>150</tps>
+			</ptool>
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.vf-uk.xml.NRG1.200TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>200</tps>
+			</ptool>
+		</trafficProfile>
+		<trafficProfile id="vzw430">
+			<!-- LTE NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.vzw430.lte.NRG1.1000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<!-- LTE NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/LTE/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.vzw430.lte.NRG2.1000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<!-- HSS NRG1 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.vzw430.NRG1.1000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<!-- HSS NRG2 -->
+			<ptool>
+				<ptool_dir>/local/jenkins/ptool/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.xml.vzw430.NRG2.1000TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>1000</tps>
+			</ptool>
+			<tgen>
+				<scenario>404</scenario>
+				<tps>2000</tps>
+				<threads>200</threads>
+				<application>AAA_User</application>
+			</tgen>
+		</trafficProfile>
+		<!-- Avaialble for LN HPG8-7 -->
+		<trafficProfile id="vzw430_R4302_SA_traffic_1NRG">
+			<!-- LTE NRG1 -->
+			<ptool>
+				<ptool_dir>/local/R4302_SA_traffic/lnhp21/LTE.sa.4302.NRG1/bin</ptool_dir>
+				<application>LTE</application>
+				<transport>SCTP</transport>
+				<scenario>scenario.sa.xml.lte.NRG1.3100TPS.1.sherry</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>3100</tps>
+			</ptool>
+			<!-- HSS NRG1 -->
+			<!-- <ptool> <ptool_dir>/local/R4302_SA_traffic/lnhp21/HSS.sa.4302.NRG1/bin</ptool_dir> 
+				<application>HSS</application> <transport>SCTP</transport> <scenario>scenraio.sa.xml.NRG1.7500TPS.1.sherry</scenario> 
+				<FE_Key>1</FE_Key> <tps>7500</tps> </ptool> -->
+		</trafficProfile>
+		<trafficProfile id="HP25-traffic-debug_spectra">
+			<spectra>
+				<model>ALU-PureHLR</model>
+				<tps>1000</tps>
+			</spectra>
+		</trafficProfile>
+		<trafficProfile id="HP25-traffic-debug">
+			<jmeter>
+				<interface>SOAP</interface>
+				<workspace>HP25_PT_test_ALU_R422.jmx</workspace>
+				<tps>tps</tps>
+				<jmeter_dir>/local/jzhao/R422/jmeter</jmeter_dir>
+				<FE_Key>1</FE_Key>
+			</jmeter>
+		</trafficProfile>
+		<trafficProfile id="no_traffic"></trafficProfile>
+		<trafficProfile id="v8650-FUZZ">
+			<ptool>
+				<ptool_dir>/local/jenkins/meheuxyv/HSS/bin</ptool_dir>
+				<application>HSS</application>
+				<transport>TCP</transport>
+				<scenario>scenario.alu.xml.NRG1.2500TPS.1</scenario>
+				<FE_Key>1</FE_Key>
+				<tps>500</tps>
+			</ptool>
+		</trafficProfile>
+	</trafficProfiles>
+	<defaultTrafficProfile>full_standard</defaultTrafficProfile>
+	<routers>
+		<router id="LN-ROUTER-1">
+			<ip>172.25.201.157</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>FE_R1_SPA79-82-87-230 ></prompt>
+		</router>
+		<router id="LN-ROUTER-2">
+			<ip>172.25.203.238</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>ED1_SPA06 ></prompt>
+		</router>
+		<router id="LN-ROUTER-3">
+			<ip>172.25.203.244</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>ED1_SPA07-08-10 ></prompt>
+		</router>
+		<router id="LN-ROUTER-4">
+			<ip>172.25.203.134</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>ED1_SPA09-SPA13 ></prompt>
+		</router>
+		<router id="LN-ROUTER-5">
+			<ip>172.25.203.150</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>FR1_SPA11 ></prompt>
+		</router>
+		<router id="LN-ROUTER-6">
+			<ip>172.25.203.158</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>FR1_SPA12 ></prompt>
+		</router>
+		<router id="LN-ROUTER-7">
+			<ip>172.25.203.197</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>UNKNOWN</prompt>
+		</router>
+		<router id="LN-ROUTER-8">
+			<ip>172.25.203.212</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>ED0_SPA03-04-19 ></prompt>
+		</router>
+		<router id="LN-ROUTER-9">
+			<ip>172.25.203.229</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>UNKNOWN</prompt>
+		</router>
+		<router id="LN-ROUTER-10">
+			<ip>172.25.196.132</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>FR1_hp30_hp33 ></prompt>
+		</router>
+		<router id="LN-ROUTER-11">
+			<ip>172.25.196.140</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>FR1_hp31_hp32 ></prompt>
+		</router>
+		<router id="LN-ROUTER-12">
+			<ip>172.25.235.126</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP1/4/7-HP10-13-16 ></prompt>
+		</router>
+		<router id="LN-ROUTER-13">
+			<ip>172.25.235.134</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP2/5/8-HP11-14-17 ></prompt>
+		</router>
+		<router id="LN-ROUTER-14">
+			<ip>172.25.235.94</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP3-6-9-HP12-15-18 ></prompt>
+		</router>
+		<router id="LN-ROUTER-15">
+			<ip>172.25.235.54</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP1/4/7-HP10-13-16 ></prompt>
+		</router>
+		<router id="LN-ROUTER-16">
+			<ip>172.25.235.62</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP2/5/8-HP11-14-17 ></prompt>
+		</router>
+		<router id="LN-ROUTER-17">
+			<ip>172.25.235.22</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP3-6-9-HP12-15-18 ></prompt>
+		</router>
+		<router id="LN-ROUTER-18">
+			<ip>172.25.195.164</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMLAB-1</account>
+			<prompt>FR1_SPA104-SPA46 ></prompt>
+		</router>
+		<router id="LN-ROUTER-19">
+			<ip>172.25.235.22</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED1-HP3-6-9-HP12-15-18 ></prompt>
+		</router>
+		<router id="LN-ROUTER-20">
+			<ip>172.25.234.54</ip>
+			<type>6850</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>ED0_hp18_40_43 ></prompt>
+		</router>
+		<router id="LN-ROUTER-21">
+			<ip>172.25.203.92</ip>
+			<type>6900</type>
+			<account>LN-ROUTER-ADMIN-1</account>
+			<prompt>router_6900 ></prompt>
+		</router>
+	</routers>
+	<disturbances>
+		<time>
+			<!-- disturbance time specified in documents stored in COMPAS tool tool 
+				url: http://inserv.ih.lucent.com/~compas1/ disturbances for releases 4.3.* 
+				are stored in document id 185951 and in document id 183269 for releases 4.2.*. -->
+
+			<!-- time unit : millisecond -->
+			<provisioning>
+				<pilotSwitchOver>
+					<HP>
+						<release id="SDM4.2">1</release>
+						<release id="SDM4.3">2</release>
+						<default>3</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">4</release>
+						<release id="SDM4.3">5</release>
+						<default>6</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">7</release>
+						<release id="SDM4.3">8</release>
+						<default>9</default>
+					</Rouzic>
+				</pilotSwitchOver>
+				<mattedPairSwo>
+					<HP>
+						<release id="SDM4.2">10</release>
+						<release id="SDM4.3">11</release>
+						<default>12</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">13</release>
+						<release id="SDM4.3">14</release>
+						<default>15</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">16</release>
+						<release id="SDM4.3">17</release>
+						<default>18</default>
+					</Rouzic>
+				</mattedPairSwo>
+			</provisioning>
+			<telecom>
+				<pilotSwitchOver>
+					<HP>
+						<release id="SDM4.2">19</release>
+						<release id="SDM4.3">20</release>
+						<default>21</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">22</release>
+						<release id="SDM4.3">23</release>
+						<default>15000</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">24</release>
+						<release id="SDM4.3">25</release>
+						<default>26</default>
+					</Rouzic>
+				</pilotSwitchOver>
+				<mattedPairSwo>
+					<HP>
+						<release id="SDM4.2">27</release>
+						<release id="SDM4.3">28</release>
+						<default>29</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">30</release>
+						<release id="SDM4.3">31</release>
+						<default>32</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">33</release>
+						<release id="SDM4.3">34</release>
+						<default>35</default>
+					</Rouzic>
+				</mattedPairSwo>
+				<RTBladeFailover>
+					<HP>
+						<release id="SDM4.2">36</release>
+						<release id="SDM4.3">37</release>
+						<default>38</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">39</release>
+						<release id="SDM4.3">40</release>
+						<default>41</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">42</release>
+						<release id="SDM4.3">43</release>
+						<default>44</default>
+					</Rouzic>
+				</RTBladeFailover>
+				<DBBladeFailover>
+					<HP>
+						<release id="SDM4.2">45</release>
+						<release id="SDM4.3">46</release>
+						<default>47</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">48</release>
+						<release id="SDM4.3">49</release>
+						<default>50</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">51</release>
+						<release id="SDM4.3">52</release>
+						<default>53</default>
+					</Rouzic>
+				</DBBladeFailover>
+				<FEPilotFailover>
+					<HP>
+						<release id="SDM4.2">54</release>
+						<release id="SDM4.3">55</release>
+						<default>56</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">57</release>
+						<release id="SDM4.3">58</release>
+						<default>59</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">60</release>
+						<release id="SDM4.3">61</release>
+						<default>62</default>
+					</Rouzic>
+				</FEPilotFailover>
+				<iLBBladesFailover>
+					<HP>
+						<release id="SDM4.2">63</release>
+						<release id="SDM4.3">64</release>
+						<default>65</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">66</release>
+						<release id="SDM4.3">67</release>
+						<default>68</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">69</release>
+						<release id="SDM4.3">70</release>
+						<default>71</default>
+					</Rouzic>
+				</iLBBladesFailover>
+				<SwitchFailover>
+					<HP>
+						<release id="SDM4.2">72</release>
+						<release id="SDM4.3">72</release>
+						<default>74</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">75</release>
+						<release id="SDM4.3">76</release>
+						<default>15000</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">77</release>
+						<release id="SDM4.3">78</release>
+						<default>79</default>
+					</Rouzic>
+				</SwitchFailover>
+				<VRRPFailover>
+					<HP>
+						<release id="SDM4.2">80</release>
+						<release id="SDM4.3">81</release>
+						<default>82</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">83</release>
+						<release id="SDM4.3">84</release>
+						<default>85</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">86</release>
+						<release id="SDM4.3">87</release>
+						<default>88</default>
+					</Rouzic>
+				</VRRPFailover>
+				<DedicatedIOBladeFailover>
+					<HP>
+						<release id="SDM4.2">89</release>
+						<release id="SDM4.3">90</release>
+						<default>91</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">92</release>
+						<release id="SDM4.3">93</release>
+						<default>94</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">95</release>
+						<release id="SDM4.3">96</release>
+						<default>97</default>
+					</Rouzic>
+				</DedicatedIOBladeFailover>
+				<RTBladeReboot>
+					<HP>
+						<release id="SDM4.2">98</release>
+						<release id="SDM4.3">99</release>
+						<default>100</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">101</release>
+						<release id="SDM4.3">102</release>
+						<default>103</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">104</release>
+						<release id="SDM4.3">105</release>
+						<default>106</default>
+					</Rouzic>
+				</RTBladeReboot>
+				<DBBoardReboot>
+					<HP>
+						<release id="SDM4.2">107</release>
+						<release id="SDM4.3">108</release>
+						<default>109</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">110</release>
+						<release id="SDM4.3">111</release>
+						<default>112</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">113</release>
+						<release id="SDM4.3">114</release>
+						<default>115</default>
+					</Rouzic>
+				</DBBoardReboot>
+				<iLBBladeReboot>
+					<HP>
+						<release id="SDM4.2">116</release>
+						<release id="SDM4.3">117</release>
+						<default>118</default>
+					</HP>
+					<Bono>
+						<release id="SDM4.2">119</release>
+						<release id="SDM4.3">120</release>
+						<default>121</default>
+					</Bono>
+					<Rouzic>
+						<release id="SDM4.2">122</release>
+						<release id="SDM4.3">123</release>
+						<default>124</default>
+					</Rouzic>
+				</iLBBladeReboot>
+			</telecom>
+		</time>
+	</disturbances>
+	<alarmsToIgnore>
+		<alarm id="404">Major</alarm>
+		<alarm id="404">Cleared</alarm>
+		<alarm id="417">Critical</alarm>
+		<alarm id="417">Cleared</alarm>
+		<alarm id="999">Minor</alarm>
+		<alarm id="999">Cleared</alarm>
+		<!-- Tables manually overloaded (almost 100%) (Voda UK issue)-> Alarms 
+			raised below -->
+		<alarm id="10400">Critical</alarm> <!--EquipmentIdentity -->
+		<alarm id="10402">Critical</alarm> <!--EquipmentIsdn -->
+		<alarm id="10403">Critical</alarm> <!--HomePlmnEntity -->
+		<alarm id="10407">Critical</alarm> <!--ForeignPlmnEntity -->
+		<alarm id="951531">Critical</alarm>
+		<alarm id="951531">Cleared</alarm>
+		<alarm id="951532">Critical</alarm>
+		<alarm id="951532">Cleared</alarm>
+		<alarm id="951533">Critical</alarm>
+		<alarm id="951533">Cleared</alarm>
+		<alarm id="951209">Critical</alarm>
+		<alarm id="951209">Cleared</alarm>
+	</alarmsToIgnore>
+</configuration>

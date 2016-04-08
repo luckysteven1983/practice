@@ -1,0 +1,1138 @@
+# This is a siteinfo template file.
+# Each site should customize it for their needs.
+# and place it on their installation USB key.
+# The file must be called "siteinfo" on the key,
+# and it must be in the top level directory.
+# During new install it will exist as /install/siteinfo
+# After install, it is saved at
+# /opt/config/installinfo/.do_not_use_this_siteinfo, but it is only
+# there for historical reference; it must only be used during new install.
+# The exact contents of this file will continue to evolve.
+# name=value pairs can be defined as needed.
+# Some additional parameters that are not explicitly listed in this
+# template can be added with help from ALU, if you want to customize
+# something that is normally left to default.
+# This file could be "dotted in" to a shell script,
+# so it should follow shell rules for names and quoting and such.
+# But if tools want to parse it themselves, using perl, awk, or whatever,
+# that's fine too. Keep in mind that values could be defined multiple times.
+# For additonal information on how to fill out this template, see the
+# 5350 AS (ATCA & RMS) Customer Configuration Data Questionnaire
+# Document (IEH 575 SCT 7001).  You can access this document at:
+# http://www.cic.lucent.com/pdfaccess.html
+# The following section is for information only and can be deleted:
+#-----------------------------------------------------------------------
+# MAJOR CHANGES IN TEMPLATE:
+#
+# MCAS 3.2 Release:
+#    o	SI_START_NAMED, SI_NAME_TO_LOOKUP are optional and are used
+#	to support running the DNS named service under the platform
+#	init process.
+#    o	SI_NONPILOT_x_REDUCED_MEMORY is optional and declares that this
+#	node is running using the platform reduced memory configuration.
+#
+# MCAS 3.1 Release:
+#    o	SI_SYSTEM_TYPE has been obsoleted.  MCAS 3.1 now supports
+#	hybrid systems, however each Rack must be of the same type
+#	(ATCA, RMS, HPBLADE).  The System Type for each rack is inferred
+#	from either the SI_*_INTERNAL_SWITCH_TYPE and/or the server MODEL.
+#    o	To support the hybrid system, SI_INTERNAL_SWITCH_TYPE provides
+#	the default Rack type and SI_RACK_n_INTERNAL_SWITCH_TYPE can be
+#	used to set the Rack-specific System type, overridingthe prior.
+#    o	SI_NUMBER_OF_SERVERS has been obsoleted.  The definition of the
+#	SI_PILOT_x and SI_NONPILOT_x server lines will dictate how many
+#	servers exist in the system.  Therefore it is important to have
+#	the blocks for only the servers you want defined.
+#    o	SI_PLATDB_SIZE has been added to support configuring /platdb
+#	to more than the default 1GB size.
+#    o	RMS G8 now supports hardware RAID configuration.  See section
+#	describing disk configuration for details.
+#    o	Support of OpenStack Cloud infrastructure for installing MCAS.
+#
+# NOTICE TO DEVELOPERS:
+# The /usr/psp/sbin/audit_siteinfo tool is now run automatically during
+# newinstall and will abort the installation if any errors are found.
+# You MUST update the aud_siteinfo.c tool if you add, modify, or delete
+# any parameters that affect the audit.
+#-----------------------------------------------------------------------
+# This is a prefix that will be used on the hostnames of all servers
+# in the system. Typically it would be something like a city or building
+# name, or application name.
+SI_SYSTEM_PREFIX=ATCA33
+ 
+#below 2 parameters are used for SS7 configuration
+SI_SYSTEM_TS0=89
+SI_SYSTEM_SS7FORMAT=CHN
+ 
+# Indicate if this is a Single Bladed Chassis system.
+# Typically this will not need to be changed, unless it is expected that
+# this system will be limited to a single bladed Chassis and will share
+# a frame with another single bladed Chassis system.
+# This parameter has no effect on RMS systems, only on bladed systems.
+# Valid values are:
+# 	no - This is not a single chassis system (default)
+#	bottom - This is a single chassis system located in the bottom
+#                "half" of the frame
+#	top - This is a single chassis system located in the top
+#             "half" of the frame
+SI_BLADE_SINGLE_CHASSIS=top
+ 
+# Indicates the internal switch type for the system and Rack overrides.
+#	ATCA - SI_INTERNAL_SWITCH_TYPE can be MALBAN or MALBAN10 and
+#	       you should not have a SI_RACK_n_INTERNAL_SWITCH_TYPE.
+#	RMS - SI_INTERNAL_SWITCH_TYPE can be OMNI6850 or OMNI6850E.
+#	      Can be overridden by SI_RACK_n_INTERNAL_SWITCH_TYPE.
+#	      (Note: 6850 is a 24-port switch and 6850E is 48-port)
+#	HPBLADE - SI_INTERNAL_SWITCH_TYPE can be PROCURVE6120.
+#	          Can be overridden by SI_RACK_n_INTERNAL_SWITCH_TYPE
+# For VM, CLOUD and ENTERPRISE System Types, this value should not
+# be defined.
+SI_INTERNAL_SWITCH_TYPE=MALBAN
+ 
+# If racks have different types (e.g., RMS/HPBLADE), then define the
+# internal switch for each rack independently as follows.  Can define
+# each supported Rack 0..3:
+#SI_RACK_0_INTERNAL_SWITCH_TYPE=
+#SI_RACK_1_INTERNAL_SWITCH_TYPE=
+# This specifies the maximum number of allowed nodes per system.
+# This number should be the largest system supported in the cluster.
+# It must be the same in all the siteinfo files on all the other systems
+# in the cluster.
+SI_MAXNODES_PER_SYSTEM=16
+ 
+# If multiple systems are in a cluster, each system must have a unique id.
+# The range is 1 to 64, depending on the value of SI_MAXNODES_PER_SYSTEM.
+# The default for SI_MAXNODES_PER_SYSTEM is 128, in which case the range
+# is from 1 to 8.
+# If the system is not in a cluster, you can leave this at 1.
+SI_CLUSTER_SITE_ID=1
+ 
+# This specifies the number of NFS daemons to be started. It applies to
+# any node running NFS. The default is 8. Range is 8 - 128.
+SI_NFS_DAEMONS=8
+ 
+# This specifies the size of the platform database partition (/platdb)
+# in gigabytes.
+# Default is 1 (1GB). Range is 1 - 20.
+SI_PLATDB_SIZE=10
+ 
+# Provide the IP addresses to use for direct connection to each of the pilots
+# (including /CIDR mask).
+# Note: In cloud environments where the IPs are managed on the hosting side,
+# set these values to none.  (SI_EXTERNAL_FLOATING_IP is still required)
+SI_EXTERNAL_IP_A=135.252.182.149/28
+SI_EXTERNAL_IP_B=135.252.182.150/28
+ 
+# Optional. If you want to assign aliases for the above two external IPs
+# to appear in /etc/hosts file, enter one or more aliases here.
+#SI_EXTERNAL_HOSTNAMES_A=
+#SI_EXTERNAL_HOSTNAMES_B=
+# Provide the IP address that will "float" between the two pilots
+# (including /CIDR mask).
+SI_EXTERNAL_FLOATING_IP=135.252.182.148/28
+ 
+# In a cloud environment, VIPs are (by default) managed through the
+# nova client so that they are assigned to the active VM in the
+# hosting environment.  However, in some cases, you may want the
+# VIP to be managed on the VM itself.  In such a case, set the
+# MANAGEMENT to linux.  Valid values are linux or nova.
+#SI_EXTERNAL_FLOATING_IP_MANAGEMENT=
+# Optional. If you want to assign aliases for the above external IP
+# to appear in /etc/hosts file, enter one or more aliases here.
+SI_EXTERNAL_HOSTNAMES_FLOATING="ATCA33"
+ 
+# Static Handling for SI_EXTERNAL_FLOATING_IP
+# (none|bounce|down)
+SI_EXTERNAL_FLOATING_IP_STATIC_HANDLING=none
+ 
+# Provide the gateway IP address for the Pilots.  (including /CIDR mask).
+# Typically, this is on the OAM network.
+# This will be also be used as the default route initially, but can
+# be changed after installation.
+SI_EXTERNAL_GATEWAY_IP=172.26.33.28/24
+ 
+# Provide the interface (or interface pair as <iface1>/<iface2>)
+# that will support the external_IPs above.
+# For rouzic, this would probably be eth2/eth3
+# For molene, this would probably be eth0/eth1
+# For Malban-based, this would be similar to eth0.5/eth1.6
+# for bono, this would probably be eth2/eth3 or eth6/eth7
+# Refer to IEH 575 SCT 7001 for all Ethernet Device Assignments
+SI_EXTERNAL_INTERFACE=eth0.7
+ 
+# Provide the ARP Target IP address for the OAM
+# network.  Only if it is a VLAN-tagged redundant network
+# using EIPM for redundancy (including /CIDR mask).
+SI_EXTERNAL_ARP_IP=
+ 
+# Provide a subnet to use for internal communications.
+# NOTE! It is strongly recommended that you leave this at the default
+# of 169.254 unless that conflicts with something else in your network.
+# This needs to be a /16 network.
+# In a cloud environment where the internal interface will be assigned
+# IPs via DHCP from the cloud environment, set this to initiatory-dhcp.
+SI_LSN_SUBNET=169.254
+ 
+# In a cloud environment where DHCP is used, an Active Pilot internal VIP
+# must be statically assigned.  This VIP can be managed either through
+# the nova client, or on the VM interface by the Linux OS.
+# This needs to be in same subnet as the IPs issued via DHCP
+#SI_PILOT_PAIR_INTERNAL_VIP=
+# Valid values are linux or nova.
+#SI_PILOT_PAIR_INTERNAL_VIP_MANAGEMENT=
+# For HP BladeSystem-based systems (HPBLADE), provide a subnet to use
+# for communication to the HP Onboard Administrators (OAs).
+# Note: Must be a /27 subnet and IPs will be automatically allocated
+# for the Pilot blades and equipped OAs.
+#SI_OA_SUBNET=
+# Provide the timezone for the system.
+# Can be anything defined under /usr/share/zoneinfo
+SI_TIMEZONE=Asia/Shanghai
+ 
+# Primary and Secondary NTP server IPs. If defined, this will create an entry
+# in RCV:MENU form 2.7 with event ID of NTP to call set:time, to adjust clock.
+# These are optional and can be left blank or deleted.
+# Default for SI_NTPSERVER_SEC is the value of SI_NTPSERVER_PRIM.
+SI_NTPSERVER_PRIM=135.252.181.15
+SI_NTPSERVER_SEC=
+ 
+# Provide the window size for the MSGH process. Default is 128.
+# In high load scenarios, reject processing can take long enough so that
+# this window is overrun and can lead to message loss. This is not normal.
+# Almost everybody should use the default.
+# Allowable values are 128, 256, 512, 1024.
+#SI_MSGH_WINDOWSIZE=
+#
+# Defines whether RTDB is allowed to be started. If you do not know what
+# RTDB is, then do not change this. On diskless systems, you can set this
+# to no to save space and memory (assuming you are not using RTDB).
+#
+# Range: yes or no. Default is yes (RTDB is allowed).
+#
+#SI_RTDB_START=
+# For OpenStack Cloud installation, define the cloud authentication information
+# here.  The TENANT is the name of the tenant used during creation of the VMs.
+# The USERNAME and PASSWORD is the username and password associated with the
+# tenant.  Note that the password will be encrypted and this PASSWORD line will
+# be removed from this file prior to saving the siteinfo file on the system.
+# Finally the AUTH_URL are the authentication URL(s) used to authenticate with
+# the cloud (should be something like https://company.com:#/...).  Additional
+# authentication URLs can be specified as a comma-separated list.
+#SI_CLOUD_USERNAME=
+#SI_CLOUD_PASSWORD=
+#SI_CLOUD_TENANT=
+#SI_CLOUD_AUTH_URL=
+#
+#-----------------------------------------------------------------------
+#
+# The following sections are the DDM parameters.  There are 4 types of
+# DDM parameters to specify: DDM configuration parameters,  DDM partition sizes,
+# DDM Geo-redundancy parameters, and finally DDM MySQL parameters.
+#
+# The following section is required to be filled out by the installer.  These
+# values are critical for DDM to work properly.
+#
+# DDM configuration parameters
+#
+# Define the number of DDM (MySQL) database nodes which will exist on the
+# system. Should equal number of servers assigned with role DDM.
+#
+# The valid range is even numbers between 2 - 16.
+#
+#
+# Define the configuration used in this installation.  Valid values are:
+# 	other - For any installation where the NDB nodes are not running on the pilots.
+#	simplex - For a Single Server installation.
+#
+#
+# DDM partition sizes
+# Defines the size in Giga-Bytes (G) of the mirrored backup partition
+# to reside on the Pilot Blades/Servers
+#
+# Range: 10G or greater
+#
+#
+# Defines the size in Giga-Bytes (G) of the partition to reside
+# on the Pilot Blades/Servers that will be used to save the database
+# replication logs in a database replicated configuration.
+#
+# Range: 1G or greater
+#
+#
+# Defines the disk volume group  of the Network DataBase Daemon (NDBD)
+# database in-memory backup partition for a Database Blade/Server in
+# the system. If only one disk is equipped on the DDM nonPilots, then
+# user1 should be selected.
+#
+# Range: user1,user2 or any other platform defined user(x) volume group
+#
+#
+# Defines the size in Giga-Bytes (G) of the Network DataBase Daemon (NDBD)
+# database in-memory backup partition for a Database Blade/Server in
+# the system.
+#
+# Range: 32G or greater
+#
+#
+# Defines the disk volume group of the database stored in disk
+# tables (Not in-core) for a Database Blade/Server in the system.
+# If only one disk is equipped on the DDM nonPilots, then user1 should
+# be selected.
+#
+# Range: user1,user2 or any other platform defined user(x) volume group
+#
+#
+# Defines the size in Giga-Bytes (G) of the database stored in disk
+# tables (Not in-core) for a Database Blade/Server in the system
+#
+# Range: 1G or greater
+#
+# Geo-redundancy parameters
+# These fields can be left blank if installing standalone system
+# without replication.
+# DDM MySQL parameters
+#-----------------------------------------------------------------------
+#
+# The following entries are available to be configured by an installer,
+# but it is recommended the default values are kept, unless specifically
+# required.
+#
+# Define the size used to hold the MySQL non-cluster database information.
+# This includes includes the disk database, log files, and other information
+# (Pilot and non-pilots).
+#
+# DDM configuration parameters
+SI_DDM_SUPPL_FILES="distributed.ini gdmp.ini conf.ini network.ini partitions.ini"
+ 
+# DDM MySQL parameters
+#
+#-----------------------------------------------------------------------
+# SI_START_HIDDEN_DDM_PARAMETERS
+#
+# In this section add any entries which are not advertised, but exist
+# in the DDM configuration files.  They will be overwritten if added to
+# this section.  Prefix the DDM environment variable with SI_DDM for
+# DDM parameters, and SI_MYSQL for MySQL parameters (as done in the
+# previous 2 sections).  It is expected this section will be left empty
+# most of the time.
+#
+#
+# (Add any extra parameters here)
+# Example: SI_MYSQL_default_options_file
+#
+# SI_END_HIDDEN_DDM_PARAMETERS
+#-----------------------------------------------------------------------
+# FASTCACHE paired blades. Colon separated RCS values.
+# First RCS value must be PilotA.
+# e.g. SI_FASTCACHE_PAIR=0-0-1:0-0-9
+SI_FASTCACHE_PAIR=0-0-1:0-0-9
+ 
+# VHOST and FASTCACHE paired blades for IO handlers.
+# These are two colon separated RCS values to be paired for fault tolerance
+# e.g. SI_VHOST_PAIR_1=0-0-10:0-0-14
+# For VHOST, leave the value blank if IO handlers are on the pilot
+SI_VHOST_PAIR_1=0-0-3:0-0-11
+ 
+# Set SI_VHOST_PAIR to the address the IO handler listen to
+#SI_VHOST_PAIR_1_IP=
+# In a cloud environment where DHCP is used, a Active VHOST internal VIP
+# must be statically assigned.  This VIP can be managed either through
+# the nova client, or on the VM interface by the Linux OS.
+# This needs to be in same subnet as the IPs issued via DHCP
+#SI_VHOST_PAIR_1_INTERNAL_VIP=
+# Valid values are linux or nova.
+#SI_VHOST_PAIR_1_INTERNAL_VIP_MANAGEMENT=
+# You can add similar values for SI_VHOST_PAIR_2, SI_VHOST_PAIR_3, etc
+# if needed.
+# In a cloud environment where DHCP is used, internal VIPs must still be
+# statically assigned to VHOST pairs.  These VIPs can be managed either through
+# the nova client, or on the VM interface by the Linux OS.
+# This needs to be in same subnet as the IPs issued via DHCP
+#SI_PILOT_PAIR_INTERNAL_VIP=
+# Valid values are linux or nova.
+#SI_PILOT_PAIR_INTERNAL_VIP_MANAGEMENT=
+# Defines the openjdk version to use on all nodes.
+# Values are: 1.6, 1.7
+# Default is 1.6
+#SI_OPENJDK_VERSION=
+#SI_DOMAIN_NAME=
+# One or two DNS server IPs
+SI_RESOLVER_1=
+SI_RESOLVER_2=
+ 
+#
+# Defines whether to start DNS named service on the platform.
+#
+# Range: yes or no
+#
+#SI_START_NAMED=
+#
+# Defines nslookup name that INIT uses to verify named service is working
+#
+# Range: Any valid DNS name accessible from the resolvers.
+#
+#SI_NAME_TO_LOOKUP=
+#-----------------------------------------------------------------------
+# Specify the PDUA type which is present.  By default, ATCA systems will
+# assume a SAPDU type PDUA (newer 3U model) exists.  To change this
+# assumption, change the SI_PDUA_TYPE on the next line to one of the
+# supported values:
+#	SAPDU	- Newer 3U PDUA (SAPDUAA/AB) [default]
+#	JSXPDU	- Older 2U PDUA (JSXPDU)
+#	NOPDU	- No (or unmonitored) PDUA is installed
+# NOTE: This value will be ignored if not installing an ATCA system.
+#       All racks in a system are assumed to have the same PDUA type
+SI_PDUA_TYPE=SAPDU
+ 
+# Provide the MAC addresses associated with any PDUA RALARMAA (FV AB)
+# equipped in a rack which has unique MAC addresses.  The two MAC
+# addresses will be shown on a sticker attached to the RALARMAA card.
+# Add a pair of entries SI_PDUA_<rack>_MAC1 and SI_PDUA_<rack>_MAC2 for
+# each RACK containing a PDUA with the new RALARMAA card.
+# If the PDUA in RACK 0 is the older RALARMAA (FV AA) card with
+# hard-coded MAC addresses, leave the following two lines commented out.
+# If the PDUA in RACK 0 is the newer RALARMAA (FV AB) alarm card,
+# uncomment and set the following:
+#SI_PDUA_0_MAC1=
+#SI_PDUA_0_MAC2=
+# To specify MAC addresses for the RALARMAA card in RACK 1 uncomment and set:
+#SI_PDUA_1_MAC1=
+#SI_PDUA_1_MAC2=
+# To specify MAC addresses for the RALARMAA card in RACK 2 uncomment and set:
+#SI_PDUA_2_MAC1=
+#SI_PDUA_2_MAC2=
+# To specify MAC addresses for the RALARMAA card in RACK 3 uncomment and set:
+#SI_PDUA_3_MAC1=
+#SI_PDUA_3_MAC2=
+#-----------------------------------------------------------------------
+# The following section defines the Server Specific Information
+#
+# SI_PILOT_A_* must always be defined.  For a single server or enterprise
+# installation, this is all you would define.  For multi-node systems,
+# SI_PILOT_B_* must also be defined.  After the PILOT node information is
+# defined, provide a SI_NONPILOT_n_* block for each non-pilot node which
+# will be defined.  Delete the remaining blocks after all nodes have been
+# defined.
+# For each server, the MAC addresses are the MAC addresses of the
+# ethernet ports that will be used for network booting the server.
+# The INTERNAL_INTERFACES specifies which eth ports to use for internal
+# communication between the nodes within the MCAS system. A pair of eth
+# devices are required, The following are the suggested settings:
+#	ATCA w/ rouzic: eth0/eth1
+#	ATCA w/ molene: eth2/eth3
+#	ATCA w/ bono + Malban10: eth4/eth5
+#	RMS w/ HP DL380-G5: eth0/eth1
+#	RMS w/ HP DL380-G6: eth0/eth2
+#	RMS w/ HP DL380-G8: eth0/eth2
+#	HP blade system: eth0/eth1
+# (Refer to IEH 575 SCT 7001 for Ethernet Device to Physical Port Mappings)
+#
+# If the server is configured to use Serial over LAN, set its *_SOL
+# value to y, otherwise leave it at n.
+# If you don't want any console redirection at all (for a virtual machine
+# or if you only have a real console, not a terminal server) set to noredirect.
+#
+# Valid values of MODEL for each rack type:
+#	ATCA - bono, molene, rouzic
+#	RMS - G5, G6, G8
+#	HPBLADE - hpblade
+#	VM/CLOUD - vm
+#	ENTERPRISE - enterprise
+#
+# You can configure Hardware (HW) RAID on RMS G8 servers (Pilot and Non-Pilots).
+# In configuring HW RAID, note that the System Disks in an RMS server are
+# defined as the first two disks as seen by the controller (Box 2, Bays 1,2).
+# Non-System disks are all remaining disks (Box 2, Bays 3-8 and Box 1).
+# All physical disks in RMS are by default configured as Simple RAID0, meaning
+# that the physical disk is configured as a single RAID0 logical volume, which
+# makes it appear as a single physical disk to Linux.  The following optional
+# System and Non-System disk configurations are supported during installation:
+# System Disks as RAID1 on both Pilot and Non-Pilot nodes.  System disks on
+# Pilot nodes are configured during the USB install process by asking the user
+# if they want to use the optional RAID1 HW mirroring.  Therefore Pilot system
+# disk HW RAID1 configuration is not specified in siteinfo.  Non-Pilot system
+# disk optional RAID1 configuration can be specified by specifying the optional
+# SI_NONPILOT_*_SYSTEM_DISK parameter to specify RAID1, as follows:
+#    SI_NONPILOT_1_SYSTEM_DISK=RAID1
+# The default is the system disks will be configured as simple RAID0 (2 disks).
+# Both nodes of a VHOST pair MUST have the exact same disk configuration.
+# Pilot and Non-Pilot Non-System (disks after first two) can be optionally
+# configured as hardware RAID5.  This is only valid on 8 and 16 disk
+# configurations.  If this option is used, then the following RAID5 configs
+# will be supported (only on RMS G8 servers [MODEL=G8]):
+#   8 disks installed:
+#	- first two disks are system disks (RAID0 or RAID1)
+#	- next 6 disks are a 5-disk RAID5 and 1 global spare disk
+#  16 disks installed:
+#	- first two disks are system disks (RAID0 or RAID1)
+#	- next 6 disks are a 5-disk RAID5 and 1 global spare disk
+#	- next 8 disks (Box 1) are a 7-disk RAID5 and 1 global spare disk
+# The optional HW RAID5 disk configuration can be specified as follows:
+#    SI_PILOT_A_NONSYSTEM_DISKS=RAID5
+#    SI_PILOT_B_NONSYSTEM_DISKS=RAID5
+#    SI_NONPILOT_1_NONSYSTEM_DISKS=RAID5
+# Both Pilots and both nodes of VHOST pair MUST have the exact same disk
+# configuration.  Default is that all non-system disks are configured as
+# simple RAID0 disks.
+#
+# You can supply an optional SI_*PILOT_*_DISK_USER2 parameter that specifies
+# on which physical disk(s) to place the user2 volume group. Multiple disks
+# are separated by colons, like
+#    SI_NONPILOT_1_DISK_USER2=2:3:4
+# The range of valid disk numbers is 2 to the number of disks the servers has.
+# You can supply additional similar parameters for USER3, USER4, etc.
+# Default on PILOTS (nothing specified) is USER1 contains all additional disks.
+# Default on NONPILOTS is USER2 contains all additional disks.
+# NOTE:  You cannot use this parameter if HW RAID5 has been enabled.
+#
+# You can supply an optional SI_NONPILOT_*_DISK_MIRRORED parameter
+# that specifies that the disks on this nonpilot are software RAID1 mirrored
+# disks. The nonpilot must have at least two disks, and should have an even
+# number of disks. Only disk pairs (two disks per pair) can be mirrored.
+#    SI_NONPILOT_1_DISK_MIRRORED=YES
+# Default is disks are not mirrored.
+# NOTE:  You cannot use this parameter if HW RAID1/RAID5 has been enabled.
+#
+# You can supply an optional SI_NONPILOT_*_REDUCED_MEMORY parameter
+# that specifies that this nonpilot is to use the reduced platform memory
+# configuration and limits. This is a special option normally only used
+# on nonpilots that do not have any disks (diskless) and have little
+# memory.
+#    SI_NONPILOT_1_REDUCED_MEMORY=yes
+# Default is no (use normal platform memory configuration and limits).
+#
+# The role will need to exist. The platform will define at least
+#	pilot
+# If the thirdParty.DDM.tar.gz is on the USB key, it will define
+#	DDM
+# If the thirdParty.ASR.tar.gz is on the USB key, it will define
+#	ASR
+# If the siteinfo has SI_MAS_CONFIG=YES, it will define
+#	MAS
+# and applications can define additional roles.
+#
+# The bootgroups should be set up to ensure that you can simultaneously
+# reboot all the servers in any group without affecting service
+# (other than reduced capacity).
+# There should be no more servers per bootgroup than you are willing to have
+# rebooting simultanously during a software upgrade.
+#
+# The OPTIONS let you associate mods with a specific server,
+# independent of its role. It is a comma-separated list, and may be empty.
+#
+# Supported OPTIONS for Pilot:
+#  For a MAS role node:
+#    RTDB,MATESCH,
+#    TCPIPSCH,DIAMSCH,
+#    SPADBI,SUBMEAS,
+#    DGR,VXPROC,
+#    BILL,BILLHPR,
+#    CDRSCH,CDRFTP,CDRGTP,
+#    TIMESTEN,
+#    SS7,
+#    IPSCH, SIPSCH,
+#    MEASAGR, AGRHPR
+#
+#  For an MCAS role node:
+#    SS7
+#
+# Supported OPTIONS for Nonpilot:
+#  For a MAS role node:
+#    MATESCH,
+#    TCPIPSCH,DIAMSCH,
+#    SPADBI,SUBMEAS,
+#    CORCMON,DGR,VXPROC,
+#    BILL,BILLHPR,
+#    CDRFTP,
+#    TIMESTEN,
+#    SS7,
+#    IPSCH, SIPSCH,
+#    APACHE,TOMCATMON,
+#    AGRHPR
+#  For an MCAS role node:
+#    SS7
+#
+# Pilot server A
+#	If ATCA/HPBLADE, rcs will typically be 0-0-1
+#	If RMS, rcs will typically be 0-0-0
+SI_PILOT_A_RCS=0-0-1
+SI_PILOT_A_MAC1=00:11:3f:c2:8a:d3
+SI_PILOT_A_MAC2=00:11:3f:c2:8a:d2
+SI_PILOT_A_MODEL=rouzic
+SI_PILOT_A_INTERNAL_INTERFACES=eth0/eth1
+SI_PILOT_A_SOL=n
+SI_PILOT_A_OPTIONS=MEASAGR,AGRHPR
+#SI_PILOT_A_SYSTEM_DISK=
+#SI_PILOT_A_NONSYSTEM_DISKS=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_PILOT_A_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_PILOT_A_VMID=
+# Pilot server B
+#	If ATCA/HPBLADE, rcs will typically be 0-0-9
+#	If RMS, rcs will typically be 0-1-0
+SI_PILOT_B_RCS=0-0-9
+SI_PILOT_B_MAC1=00:11:3f:c3:95:6d
+SI_PILOT_B_MAC2=00:11:3f:c3:95:6c
+SI_PILOT_B_MODEL=rouzic
+SI_PILOT_B_INTERNAL_INTERFACES=eth0/eth1
+SI_PILOT_B_SOL=n
+SI_PILOT_B_OPTIONS=MEASAGR,AGRHPR
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_PILOT_B_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_PILOT_B_VMID=
+# Nonpilot server #1
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-2
+#	If RMS, rcs will will typically be 0-2-0
+SI_NONPILOT_1_RCS=0-0-2
+SI_NONPILOT_1_MAC1=00:11:3f:df:41:11
+SI_NONPILOT_1_MAC2=00:11:3f:df:41:10
+SI_NONPILOT_1_MODEL=rouzic
+SI_NONPILOT_1_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_1_SOL=y
+ 
+#	If MCAS, this ROLE is typically DDM
+SI_NONPILOT_1_ROLE=MAS
+SI_NONPILOT_1_BOOTGROUP=1
+SI_NONPILOT_1_OPTIONS=DDM,AGRHPR
+ 
+#	Not All Non-Pilots require external Default Gateways, but if needed
+#SI_NONPILOT_1_GATEWAY=
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_1_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_1_VMID=
+SI_NONPILOT_1_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #2
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-10
+#	If RMS, rcs will typically be 0-3-0
+SI_NONPILOT_2_RCS=0-0-10
+SI_NONPILOT_2_MAC1=00:11:3f:e8:84:5b
+SI_NONPILOT_2_MAC2=00:11:3f:e8:84:5a
+SI_NONPILOT_2_MODEL=rouzic
+SI_NONPILOT_2_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_2_SOL=y
+ 
+#	If MCAS, this ROLE is typically ASR
+SI_NONPILOT_2_ROLE=MAS
+SI_NONPILOT_2_BOOTGROUP=2
+SI_NONPILOT_2_OPTIONS=DDM,AGRHPR
+#SI_NONPILOT_2_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_2_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_2_VMID=
+SI_NONPILOT_2_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #3
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-6
+#	If RMS, rcs will typically be 0-4-0
+SI_NONPILOT_3_RCS=0-0-6
+SI_NONPILOT_3_MAC1=00:11:3f:c2:a9:d1
+SI_NONPILOT_3_MAC2=00:11:3f:c2:a9:d0
+SI_NONPILOT_3_MODEL=rouzic
+SI_NONPILOT_3_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_3_SOL=y
+ 
+#	If MCAS, this ROLE is typically DDM
+SI_NONPILOT_3_ROLE=MAS
+SI_NONPILOT_3_BOOTGROUP=1
+SI_NONPILOT_3_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_3_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_3_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_3_VMID=
+SI_NONPILOT_3_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #4
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-14
+#	If RMS, rcs will typically be 0-5-0
+SI_NONPILOT_4_RCS=0-0-14
+SI_NONPILOT_4_MAC1=00:11:3f:c1:9f:81
+SI_NONPILOT_4_MAC2=00:11:3f:c1:9f:82
+SI_NONPILOT_4_MODEL=rouzic
+SI_NONPILOT_4_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_4_SOL=y
+ 
+#	If MCAS, this ROLE is typically ASR
+SI_NONPILOT_4_ROLE=MAS
+SI_NONPILOT_4_BOOTGROUP=2
+SI_NONPILOT_4_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_4_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_4_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_4_VMID=
+SI_NONPILOT_4_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #5
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-3
+#	If RMS, rcs will typically be 0-6-0
+SI_NONPILOT_5_RCS=0-0-5
+SI_NONPILOT_5_MAC1=00:11:3f:c8:d5:79
+SI_NONPILOT_5_MAC2=00:11:3f:c2:6a:da
+SI_NONPILOT_5_MODEL=rouzic
+SI_NONPILOT_5_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_5_SOL=y
+ 
+#	If MCAS, this ROLE is typically DDM
+SI_NONPILOT_5_ROLE=MAS
+SI_NONPILOT_5_BOOTGROUP=1
+SI_NONPILOT_5_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_5_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_5_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_5_VMID=
+SI_NONPILOT_5_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #6
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-11
+#	If RMS, rcs will typically be 0-7-0
+SI_NONPILOT_6_RCS=0-0-13
+SI_NONPILOT_6_MAC1=00:11:3f:e2:6c:a7
+SI_NONPILOT_6_MAC2=00:11:3f:e2:6c:a6
+SI_NONPILOT_6_MODEL=rouzic
+SI_NONPILOT_6_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_6_SOL=y
+ 
+#	If MCAS, this ROLE is typically DDM
+SI_NONPILOT_6_ROLE=MAS
+SI_NONPILOT_6_BOOTGROUP=2
+SI_NONPILOT_6_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_6_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_6_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_6_VMID=
+SI_NONPILOT_6_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #7
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-4
+#	If RMS, rcs will typically be 0-8-0
+SI_NONPILOT_7_RCS=0-0-4
+SI_NONPILOT_7_MAC1=00:11:3f:c2:aa:cd
+SI_NONPILOT_7_MAC2=00:11:3f:c2:aa:cc
+SI_NONPILOT_7_MODEL=rouzic
+SI_NONPILOT_7_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_7_SOL=y
+ 
+#	If MCAS, this ROLE is typically ASR
+SI_NONPILOT_7_ROLE=MAS
+SI_NONPILOT_7_BOOTGROUP=1
+SI_NONPILOT_7_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_7_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_7_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_7_VMID=
+SI_NONPILOT_7_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #8
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-12
+#	If RMS, rcs will typically be 0-9-0
+SI_NONPILOT_8_RCS=0-0-12
+SI_NONPILOT_8_MAC1=00:11:3f:c2:aa:51
+SI_NONPILOT_8_MAC2=00:11:3f:c2:aa:50
+SI_NONPILOT_8_MODEL=rouzic
+SI_NONPILOT_8_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_8_SOL=y
+ 
+#	If MCAS, this ROLE is typically ASR
+SI_NONPILOT_8_ROLE=MAS
+SI_NONPILOT_8_BOOTGROUP=2
+SI_NONPILOT_8_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_8_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_8_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_8_VMID=
+SI_NONPILOT_8_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #9
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-5
+#	If RMS, rcs will typically be 1-0-0 (or 0-10-0 for 12-server rack)
+SI_NONPILOT_9_RCS=0-0-3
+SI_NONPILOT_9_MAC1=00:11:3f:c1:94:15
+SI_NONPILOT_9_MAC2=00:11:3f:c1:94:14
+SI_NONPILOT_9_MODEL=rouzic
+SI_NONPILOT_9_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_9_SOL=y
+ 
+#	If MCAS, this ROLE is typically ASR
+SI_NONPILOT_9_ROLE=MAS
+SI_NONPILOT_9_BOOTGROUP=1
+SI_NONPILOT_9_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_9_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_9_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_9_VMID=
+SI_NONPILOT_9_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #10
+# 	If ATCA/HPBLADE, rcs will typically be 0-0-13
+#	If RMS, rcs will typically be 1-1-0 (or 0-11-0 for 12-server rack)
+SI_NONPILOT_10_RCS=0-0-11
+SI_NONPILOT_10_MAC1=00:11:3f:e2:6c:c1
+SI_NONPILOT_10_MAC2=00:11:3f:e2:6c:c0
+SI_NONPILOT_10_MODEL=rouzic
+SI_NONPILOT_10_INTERNAL_INTERFACES=eth0/eth1
+SI_NONPILOT_10_SOL=y
+ 
+#	If MCAS, this ROLE is typically ASR
+SI_NONPILOT_10_ROLE=MAS
+SI_NONPILOT_10_BOOTGROUP=2
+SI_NONPILOT_10_OPTIONS=DDM,SS7,AGRHPR
+#SI_NONPILOT_10_GATEWAY=
+ 
+#	If not using the ext4 file system type, enter it here.
+#SI_NONPILOT_10_FS=
+#	If installing in CLOUD, must specify VMid for this VM here.
+#SI_NONPILOT_10_VMID=
+SI_NONPILOT_10_REDUCED_MEMORY=yes
+ 
+# Nonpilot server #11
+# 	If ATCA, rcs will typically be 0-1-1
+#	If HPBLADE, rcs will typically be 0-0-7
+#	If RMS, rcs will typically be 1-2-0 (or 1-0-0 for 12-server rack)
+#	If MCAS, this ROLE is typically DDM
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #12
+# 	If ATCA, rcs will typically be 0-1-9
+#	If HPBLADE, rcs will typically be 0-0-15
+#	If RMS, rcs will typically be 1-3-0 (or 1-1-0 for 12-server rack)
+#	If MCAS, this ROLE is typically DDM
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #13
+# 	If ATCA, rcs will typically be 0-1-2
+#	If HPBLADE, rcs will typically be 0-0-8
+#	If RMS, rcs will typically be 1-4-0 (or 1-2-0 for 12-server rack)
+#	If MCAS, this ROLE is typically DDM
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #14
+# 	If ATCA, rcs will typically be 0-1-10
+#	If HPBLADE, rcs will typically be 0-0-16
+#	If RMS, rcs will typically be 1-5-0 (or 1-3-0 for 12-server rack)
+#	If MCAS, this ROLE is typically DDM
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #15
+# 	If ATCA, rcs will typically be 0-1-3
+#	If HPBLADE, rcs will typically be 0-1-1
+#	If RMS, rcs will typically be 1-6-0 (or 1-4-0 for 12-server rack)
+#	If MCAS, this ROLE is typically DDM
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #16
+# 	If ATCA, rcs will typically be 0-1-11
+#	If HPBLADE, rcs will typically be 0-1-9
+#	If RMS, rcs will typically be 1-7-0 (or 1-5-0 for 12-server rack)
+#	If MCAS, this ROLE is typically DDM
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #17
+# 	If ATCA, rcs will typically be 0-1-4
+#	If HPBLADE, rcs will typically be 0-1-2
+#	If RMS, rcs will typically be 1-8-0 (or 1-6-0 for 12-server rack)
+#	If MCAS, this ROLE is typically ASR
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #18
+# 	If ATCA, rcs will typically be 0-1-12
+#	If HPBLADE, rcs will typically be 0-1-10
+#	If RMS, rcs will typically be 1-9-0 (or 1-7-0 for 12-server rack)
+#	If MCAS, this ROLE is typically ASR
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #19
+# 	If ATCA, rcs will typically be 0-1-5
+#	If HPBLADE, rcs will typically be 0-1-3
+#	If RMS, rcs will typically be 2-0-0 (or 1-8-0 for 12-server rack)
+#	If MCAS, this ROLE is typically ASR
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #20
+# 	If ATCA, rcs will typically be 0-1-13
+#	If HPBLADE, rcs will typically be 0-1-11
+#	If RMS, rcs will typically be 2-1-0 (or 1-9-0 for 12-server rack)
+#	If MCAS, this ROLE is typically ASR
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #21
+# 	If ATCA, rcs will typically be 0-1-6
+#	If HPBLADE, rcs will typically be 0-1-4
+#	If RMS, rcs will typically be 2-2-0 (or 1-10-0 for 12-server rack)
+#	If MCAS, this ROLE is typically ASR
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+# Nonpilot server #22
+# 	If ATCA, rcs will typically be 0-1-14
+#	If HPBLADE, rcs will typically be 0-1-12
+#	If RMS, rcs will typically be 2-3-0 (or 1-11-0 for 12-server rack)
+#	If MCAS, this ROLE is typically ASR
+#	If not using the ext4 file system type, enter it here.
+#	If installing in CLOUD, must specify VMid for this VM here.
+#-----------------------------------------------------------------------
+# The following section is for automated External Network Configuration
+#
+# Based on the values used here, during new install the platform will
+# automatically configure any/all external networks as configured here.
+#
+# The variables are used as follows:
+# See GrowExtNetwork usage for arguments
+#
+#
+#-----------------------------------------------------------------------
+# The following section is for automated DRBD Configuration,
+# typically used for RTDB databases. This creates replicated VGs.
+#
+# Based on the values used here, during new install the platform will
+# automatically configure any/all nonpilot, or pilot DRBDs as defined here.
+# REPLUSER1 goes on disk1, REPLUSER2 goes on disk2, etc.
+#SI_DRBD_VHOST_1_REPLUSER1=
+#SI_DRBD_VHOST_2_REPLUSER1=
+#SI_DRBD_VHOST_2_REPLUSER2=
+# Pilots cannot have REPLUSER1.
+#SI_DRBD_PILOT_REPLUSER2=
+#-----------------------------------------------------------------------
+# The following section is for automated Raid Array Configuration.
+# This defines what LUNS to create in each volume group on the raid
+# array, and to what node to assign the LUNS.
+# The node can be any of the following: vhost pair (vhost_1), r-c-s (0-2-0),
+# or the word 'pilot.' All nodes using an array must be in the same
+# rack.
+# The first value is the size of the LUN (in GB), or the word MAX
+# to indicate use the entire array volume group, or remaining space.
+#
+# SS_RAID_1=0-0
+# SS_RAID_1_VG0_LUN0=500:pilot
+# SS_RAID_1_VG0_LUN1=MAX:pilot
+# SS_RAID_1_VG1_LUN0=MAX:pilot
+# SS_RAID_1_VG2_LUN0=MAX:pilot
+# SS_RAID_1_VG3_LUN0=MAX:pilot
+# SS_RAID_1_VG4_LUN0=MAX:pilot
+# SS_RAID_1_VG5_LUN0=MAX:0-2-0
+# SS_RAID_2=0-1
+# SS_RAID_2_VG0_LUN0=MAX:vhost_1
+# SS_RAID_2_VG1_LUN0=MAX:vhost_1
+# SS_RAID_2_VG2_LUN0=MAX:vhost_1
+# SS_RAID_2_VG3_LUN0=MAX:vhost_1
+# SS_RAID_2_VG4_LUN0=MAX:0-0-3
+# SS_RAID_2_VG5_LUN0=MAX:0-0-4
+#
+#-----------------------------------------------------------------------
+# The following section is for automated NFS Server Configuration.
+# This defines the VHOST pair(s) which will take on the role of NFS
+# server and the client nodes which will NFS mount from each server.
+# Then the definnitions of the file systems that will be created for
+# each NFS server that will be NFS mounted by the clients.
+#  Define the NFS Server vhost pair.  The NFS server can be in one
+#	of the following formats:
+#	    pilot	- NFS Server running on the OAM Pilot nodes
+#	    vhost_N	- NFS Server running on the given VHOST pair
+#
+SS_NFS_1_SERVER=pilot
+ 
+# SS_NFS_2_SERVER=vhost_1
+#  Define the NFS Client node(s) for the given NFS server.
+#	This is a colon separated list of clients in RCS format
+#
+SS_NFS_1_CLIENTS=0-0-3:0-0-4:0-0-5:0-0-6:0-0-11:0-0-12:0-0-13:0-0-14
+ 
+# SS_NFS_2_CLIENTS=0-7-0:0-8-0:0-9-0
+#  Define the file systems to create on each NFS Server that will
+#	be shared to each client node to allow NFS mounting.
+#	Format is as follows:
+#		vg:lv:size:mountpt
+#		vg:lv:size:mountpt:critical
+#		vg:lv:size:mountpt:critical:fstype:mntopts
+#	where:
+#	    vg		- LVM VG (LUN) to create file system on
+#	    lv		- LVM LV to create for this file system
+#	    size	- size (M or G) of file system
+#	    mountpt	- file system mount point
+#	    critical	- [optional] critical (yes/no)? (default=yes)
+#	    fstype	- [optional] file system type (default=ext4)
+#			  Supports fstype's supported by AddLV (ext3,ext4,xfs)
+#			  NOTE:  must specify critical option if supply fstype.
+#	    mntopts	- [optional] file system mount options for given fstype
+#			  (default=noatime)
+#
+#	NOTES:
+#	    1.  Only ext3,4, xfs file systems are supported at this point
+#	    2.  Only critical file systems will cause escalation if
+#		the file system mount fails on the NFS server node.
+#
+SS_NFS_1_FS_1=user1:sdmcore:10G:/sdmcore:no
+ 
+# SS_NFS_1_FS_2=user3:test2:100G:/test2
+# SS_NFS_1_FS_3=user4:test3:100G:/test3
+# SS_NFS_2_FS_1=user3:test4:100G:/test4
+# SS_NFS_2_FS_2=user4:test5:100G:/test5
+# SS_NFS_2_FS_3=user5:test6:1024M:/test6:no
+# SS_NFS_2_FS_4=user5:test7:1024M:/test6:no:xfs
+#-----------------------------------------------------------------------
+# The following section is for automated MAS-Style  Application Configuration.
+#-----------------------------------------------------------------------
+#
+# This parameter will define if the system to be installed will have the
+# MAS personality for running SLL and C++ SPAs managed by SPMAN.
+# If YES, the MASconfig tool will define the node IDs needed by the platform to
+# support these applications and all SI_MAS_* will be processed.
+# If NO, or missing, the MASconfig tool will exit and do nothing where
+# all SI_MAS_* will be ignored.
+# Please note: This has to be Upper case "YES" for YES.
+#   SI_MAS_CONFIG=[YES | NO]
+# Example:
+SI_MAS_CONFIG=YES
+ 
+# Add member hosts into the mas VLSN
+# <host_id> is from 1-127 and can be assigned in any order as long as it is used at most once.
+# Note: For the Pilot A and Pilot B nodes, they need to be assigned host_id of 1 and 2 respectively
+# as requested by MSGH and SPMAN subsystems.
+# i.e. if 0-0-1 is pilot A and if 0-0-9 is pilot B, then
+#   SI_MAS_VLSN_HOST_1=0-0-1    and    SI_MAS_VLSN_HOST_2=,0-0-9
+#
+#SI_MAS_VLSN_HOST_<host_id>=<r-c-s>
+#SI_MAS_VLSN_HOST_<host_id>=<r-c-s>
+#
+#Example:
+#. . .
+#. . .
+#
+#
+# TimesTen Database Related information for MAS role nodes
+#
+# The parameters to the AddLV command on how to create the timestendata
+# partition for storing the TimesTen checkpoint files.
+# If the TimesTen package thirdParty.TTInstallPkg.tar.gz is used,
+# this line is mandatory. The entries must be within two double quotes "xxx".
+# The mount= in the line must be /timestendata.
+# The size= in the line must be at least 1g.
+# The recommended value for vg= is the raid array.
+#SI_MAS_X10_TIMESTENDATA_ADDLV=
+#
+#Example:
+#SI_MAS_X10_TIMESTENDATA_ADDLV=
+# The parameters to the AddLV command on how to create the ttlog
+# partition for storing the TimesTen change log files.
+# If the TimesTen package thirdParty.TTInstallPkg.tar.gz is used,
+# this line is mandatory. The entries must be within two double quotes "xxx".
+# The mount= in the line must be /ttlog.
+# The size= in the line must be at least 4g.
+# The recommended value for the vg= is the local disk (usually user1).
+#SI_MAS_X10_TTLOG_ADDLV=
+#
+#Example:
+#SI_MAS_X10_TTLOG_ADDLV=
+# The OPTIONAL parameter to define the maximum in memory size (PermSize)
+# of the TimesTen database to create in MB.
+# If the specified, the default size will be 60 MB.
+# The minimum value for this is 60.
+# The recommended maximum value should not exceed half the size of
+# the physical memory of the node.
+#SI_MAS_X10_PERMSIZE=
+#
+#Example:
+#SI_MAS_X10_PERMSIZE=
+#-----------------------------------------------------------------------
+# This section is to configure the number of S7SCH its related processes to have in the system
+# Default will be 1 if not stated
+# Valid values are 1, 2, 3 or 4.
+# This parameter only affects nodes that are stated to have SS7 option
+#
+SI_SS7_NUMBER_OF_PROCS=1
+ 
+# Valid entries are M for Multi-process mode or C for Cluster mode.
+# The default value is M only if the SI_SS7_NUMBER_OF_PROCS parameter is specified;
+# otherwise, this parameter must be specified.
+# (M)ulti-process mode is used to allow SS7 processes (S7SCH, STSCH, SCTPSCH)
+# to run as multiple SS7 stacks within a single SS7 I/O Node.
+# (C)luster mode is used to allow SS7 processes (S7SCH, STSCH, SCTPSCH)
+# to run as single SS7 stacks within a single SS7 I/O Node.
+#
+SI_SS7_PARAM_SCP_DIST_SS7=C
+ 
+# KVM Configuration Parameters
+#
+# Defines the disk volume group of the virtual machine instances.
+# If this field is left blank, the VG with the most remaining space is
+# selected. This parameter only needs to be filled in when the KVM package
+# is installed on a Hosting environment.
+#
+# Range: user1,user2 or any other platform defined user(x) volume group
+#
+#
+# Defines the size in Giga-Bytes(G) of the partition where virtual machine
+# instances are saved. If this is left blank, 90% of the remaining VG free
+# space is used.  This parameter only needs to be filled in when the KVM package
+# is installed on a Hosting environment.
+#
+# Range: 1G or greater
+#
+SI_MAS_VLSN_HOST_1=0-0-1
+SI_MAS_VLSN_HOST_2=0-0-9
+SI_MAS_VLSN_HOST_3=0-0-2
+SI_MAS_VLSN_HOST_4=0-0-10
+SI_MAS_VLSN_HOST_5=0-0-6
+SI_MAS_VLSN_HOST_6=0-0-14
+SI_MAS_VLSN_HOST_7=0-0-5
+SI_MAS_VLSN_HOST_8=0-0-13
+SI_MAS_VLSN_HOST_9=0-0-4
+SI_MAS_VLSN_HOST_10=0-0-12
+SI_MAS_VLSN_HOST_11=0-0-3
+SI_MAS_VLSN_HOST_12=0-0-11
+SI_EXTNET_1_ARGS="iOAM 172.26.33.0/24 eth0.7/eth1.8 172.26.33.28/24"
+SI_EXTNET_1_HOST_1_ARGS="iOAM 172.26.33.1 0-0-1 iOAM-0-0-1"
+SI_EXTNET_1_HOST_2_ARGS="iOAM 172.26.33.2 0-0-2 iOAM-0-0-2"
+SI_EXTNET_1_HOST_3_ARGS="iOAM 172.26.33.3 0-0-3 iOAM-0-0-3"
+SI_EXTNET_1_HOST_4_ARGS="iOAM 172.26.33.4 0-0-4 iOAM-0-0-4"
+SI_EXTNET_1_HOST_5_ARGS="iOAM 172.26.33.5 0-0-5 iOAM-0-0-5"
+SI_EXTNET_1_HOST_6_ARGS="iOAM 172.26.33.6 0-0-6 iOAM-0-0-6"
+SI_EXTNET_1_HOST_7_ARGS="iOAM 172.26.33.9 0-0-9 iOAM-0-0-9"
+SI_EXTNET_1_HOST_8_ARGS="iOAM 172.26.33.10 0-0-10 iOAM-0-0-10"
+SI_EXTNET_1_HOST_9_ARGS="iOAM 172.26.33.11 0-0-11 iOAM-0-0-11"
+SI_EXTNET_1_HOST_10_ARGS="iOAM 172.26.33.12 0-0-12 iOAM-0-0-12"
+SI_EXTNET_1_HOST_11_ARGS="iOAM 172.26.33.13 0-0-13 iOAM-0-0-13"
+SI_EXTNET_1_HOST_12_ARGS="iOAM 172.26.33.14 0-0-14 iOAM-0-0-14"
+SI_EXTNET_1_HOST_13_ARGS="iOAM 172.26.33.16/24 0-0-1/0-0-9 iOAM-activepilot"
+SI_EXTNET_2_ARGS="sig1 192.160.33.0/25 eth0.9 "
+SI_EXTNET_2_HOST_1_ARGS="sig1 192.160.33.3/25 0-0-3 sig1-0-0-3"
+SI_EXTNET_2_HOST_2_ARGS="sig1 192.160.33.4/25 0-0-4 sig1-0-0-4"
+SI_EXTNET_2_HOST_3_ARGS="sig1 192.160.33.5/25 0-0-5 sig1-0-0-5"
+SI_EXTNET_2_HOST_4_ARGS="sig1 192.160.33.6/25 0-0-6 sig1-0-0-6"
+SI_EXTNET_2_HOST_5_ARGS="sig1 192.160.33.11/25 0-0-11 sig1-0-0-11"
+SI_EXTNET_2_HOST_6_ARGS="sig1 192.160.33.12/25 0-0-12 sig1-0-0-12"
+SI_EXTNET_2_HOST_7_ARGS="sig1 192.160.33.13/25 0-0-13 sig1-0-0-13"
+SI_EXTNET_2_HOST_8_ARGS="sig1 192.160.33.14/25 0-0-14 sig1-0-0-14"
+SI_EXTNET_2_ROUTE_1_ARGS="sig1 192.180.10.0/24 192.160.33.126  0-0-3 0-0-4 0-0-5 0-0-6 0-0-11 0-0-12 0-0-13 0-0-14"
+SI_EXTNET_3_ARGS="sig2 192.160.33.128/25 eth1.10 "
+SI_EXTNET_3_HOST_1_ARGS="sig2 192.160.33.131/25 0-0-3 sig2-0-0-3"
+SI_EXTNET_3_HOST_2_ARGS="sig2 192.160.33.132/25 0-0-4 sig2-0-0-4"
+SI_EXTNET_3_HOST_3_ARGS="sig2 192.160.33.133/25 0-0-5 sig2-0-0-5"
+SI_EXTNET_3_HOST_4_ARGS="sig2 192.160.33.134/25 0-0-6 sig2-0-0-6"
+SI_EXTNET_3_HOST_5_ARGS="sig2 192.160.33.139/25 0-0-11 sig2-0-0-11"
+SI_EXTNET_3_HOST_6_ARGS="sig2 192.160.33.140/25 0-0-12 sig2-0-0-12"
+SI_EXTNET_3_HOST_7_ARGS="sig2 192.160.33.141/25 0-0-13 sig2-0-0-13"
+SI_EXTNET_3_HOST_8_ARGS="sig2 192.160.33.142/25 0-0-14 sig2-0-0-14"
+SI_EXTNET_3_ROUTE_1_ARGS="sig2 192.180.20.0/24 192.160.33.254  0-0-3 0-0-4 0-0-5 0-0-6 0-0-11 0-0-12 0-0-13 0-0-14"
+SI_VHOST_PAIR_2=0-0-4:0-0-12
+SI_VHOST_PAIR_3=0-0-5:0-0-13
+SI_VHOST_PAIR_4=0-0-6:0-0-14
