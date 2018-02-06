@@ -1,0 +1,513 @@
+{
+	"info": {
+		"name": "cbam",
+		"_postman_id": "d41c39b8-df5c-5f2a-3091-d46a664be36d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAccessToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// example using pm.response.to.have",
+							"//pm.test(\"response is ok\", function () {",
+							"//    pm.response.to.have.status(200);",
+							"//});",
+							"//console.log(pm.response);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"expires_in\"] = data.expires_in === 300;",
+							"",
+							"//console.log(data.access_token);",
+							"pm.environment.set(\"accessToken\",data.access_token);",
+							"//console.log(pm.environment.get(\"accessToken\"));",
+							"",
+							"///pm.globals.set(\"accessToken\",data.access_token);",
+							"//console.log(pm.globals.get(\"accessToken\"));",
+							"//console.log(globals[\"accessToken\"]);",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{clientID}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{clientSecret}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/auth/realms/cbam/protocol/openid-connect/token",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"cbam",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "uploadPackage",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//request.headers[\"Authorization\"]==\"bearer\"+pm.globals.get(\"accessToken\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{accessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Content-Disposition",
+							"value": "form-data; name=\"content\"; filename={{cbamZIPenv}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/zip",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "content",
+							"description": "",
+							"type": "file",
+							"src": "{{cbamZIPenv}}",
+							"value": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/api/catalog/adapter/vnfpackages",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"api",
+						"catalog",
+						"adapter",
+						"vnfpackages"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "queryVNFs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//request.headers[\"Authorization\"]==\"bearer\"+pm.globals.get(\"accessToken\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{accessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/vnfm/lcm/v3/vnfs",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"vnfm",
+						"lcm",
+						"v3",
+						"vnfs"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "queryVNF",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//request.headers[\"Authorization\"]==\"bearer\"+pm.globals.get(\"accessToken\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{accessToken}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/api/catalog/adapter/vnfpackages/{{vnfPKGname}}",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"api",
+						"catalog",
+						"adapter",
+						"vnfpackages",
+						"{{vnfPKGname}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "createVNF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cbe6ab0f-5fb6-4636-aa52-3eb4a5d3d9dc",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"vnf created\", function () {",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"VNF_INSTANCE_ID\",data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{accessToken}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "vnfdId",
+							"value": "{{vnfPKGname}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{vnfName}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/vnfm/lcm/v3/vnfs",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"vnfm",
+						"lcm",
+						"v3",
+						"vnfs"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "instantiateVNF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ec5270ae-19ed-4f35-a069-0ede3bf2d91d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"instantiate VNF started\", function () {",
+							"    pm.response.to.have.status(202);",
+							"})",
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"operationID\",data.id);",
+							"setTimeout(function(){}, 1200000);",
+							"pm.test(\"Waiting for 1200 seconds for instantiation result\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{accessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{jsonInstantiate}}"
+				},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/vnfm/lcm/v3/vnfs/{{VNF_INSTANCE_ID}}/instantiate",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"vnfm",
+						"lcm",
+						"v3",
+						"vnfs",
+						"{{VNF_INSTANCE_ID}}",
+						"instantiate"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAccessToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// example using pm.response.to.have",
+							"//pm.test(\"response is ok\", function () {",
+							"//    pm.response.to.have.status(200);",
+							"//});",
+							"//console.log(pm.response);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"expires_in\"] = data.expires_in === 300;",
+							"",
+							"//console.log(data.access_token);",
+							"pm.environment.set(\"accessToken\",data.access_token);",
+							"//console.log(pm.environment.get(\"accessToken\"));",
+							"",
+							"///pm.globals.set(\"accessToken\",data.access_token);",
+							"//console.log(pm.globals.get(\"accessToken\"));",
+							"//console.log(globals[\"accessToken\"]);",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{clientID}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{clientSecret}}",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/auth/realms/cbam/protocol/openid-connect/token",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"cbam",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getOperationStatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79c2d106-0bab-4ff4-a8f9-89d2921d53f2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"check operation status is FINISHED\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(\"FINISHED\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer {{accessToken}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{cbamIPenv}}/vnfm/lcm/v3/operation_executions/{{operationID}}",
+					"protocol": "https",
+					"host": [
+						"{{cbamIPenv}}"
+					],
+					"path": [
+						"vnfm",
+						"lcm",
+						"v3",
+						"operation_executions",
+						"{{operationID}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

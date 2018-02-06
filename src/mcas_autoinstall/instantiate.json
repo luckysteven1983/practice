@@ -1,0 +1,122 @@
+{
+  "computeResourceFlavours": [
+    {
+      "vnfdVirtualComputeDescId": "pilotVducompute",
+      "resourceId": "c02_r04_d50"
+    },
+    {
+      "vnfdVirtualComputeDescId": "iocompute",
+      "resourceId": "c02_r04_d50"
+    },
+    {
+      "vnfdVirtualComputeDescId": "combocompute",
+      "resourceId": "c02_r04_d50"
+    },
+    {
+      "vnfdVirtualComputeDescId": "mateUpdcompute",
+      "resourceId": "c02_r04_d50"
+    },
+    {
+      "vnfdVirtualComputeDescId": "Routcompute",
+      "resourceId": "c02_r04_d50"
+    }
+  ],
+  "zones": [
+    {
+      "resourceId": "zone2",
+      "id": "zoneInfoId"
+    }
+  ],
+  "softwareImages": [
+    {
+      "vnfdSoftwareImageId": "pilotVduimage",
+      "resourceId": "test-523-DR4-pilot"
+    },
+    {
+      "vnfdSoftwareImageId": "ioimage",
+      "resourceId": "test-523-DR4-io"
+    },
+    {
+      "vnfdSoftwareImageId": "comboimage",
+      "resourceId": "test-523-DR4-combo"
+    },
+    {
+      "vnfdSoftwareImageId": "mateUpdimage",
+      "resourceId": "test-523-DR4-mate"
+    },
+    {
+      "vnfdSoftwareImageId": "Routimage",
+      "resourceId": "test-523-DR4-io"
+    }
+  ],
+  "grantlessMode": true,
+
+  "extManagedVirtualLinks": [
+   {
+     "resourceId": "OAM",
+     "virtualLinkDescId": "internalNetworkLsn0"
+   }
+  ],
+  "flavourId": "test-523-DR4",
+  "vims": [
+    {
+      "id": "vim1",
+      "interfaceInfo":
+        {
+          "providerType": "OPENSTACK",
+          "region": "regionOne"
+        },
+      "accessInfo":
+        {
+          "username": "v3803_1",
+          "password": "pcmcas@BJ1",
+          "tenant": "v3803_PCMCAS",
+          "domain":"default"
+        },
+      "interfaceEndpoint": "https://10.4.162.6:13000/v3"
+    }
+  ],
+  "instantiationLevelId": "small",
+  "extVirtualLinks": [
+    {
+      "resourceId": "OAM",
+      "extCps": [
+          {
+            "cpdId": "ecp_oamIp"
+          }          
+        ]
+    },
+    {
+      "resourceId": "dadl_io",
+      "extCps": [
+          {
+            "cpdId": "ecp_ioIp"
+          }
+        ]
+    },
+    {
+      "resourceId": "dadl_io",
+      "extCps": [
+          {
+            "cpdId": "ecp_sigIp"
+          }
+        ]
+    },
+    {
+      "resourceId": "dadl_io",
+      "extCps": [
+          {
+            "cpdId": "ecp_dbIp"
+          }
+        ]
+    },
+    {
+      "resourceId": "dadl_io",
+      "extCps": [
+        {
+          "cpdId": "ecp_db2Ip"
+        }
+      ]
+    }
+  ]
+}

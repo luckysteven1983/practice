@@ -1,0 +1,15 @@
+#### Make sure below connections are OK:
+client --> LOAD server
+client --> HEAT
+LOAD server --> HEAT
+
+#### PYTHON plugin on both client and HEAT client:
+paramiko
+pexpect
+
+#### LOAD server:
+modify corresponding dir and file name in config.ini
+
+#### HEAT client:
+create /root/keystonerc and make sure it is correct for openstack env
+scripts should be put under /root/mcas_autoinstall, if not, please modify config.ini to correct directory
