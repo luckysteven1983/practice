@@ -17,3 +17,9 @@ def AddMoney():
 print(Money)
 AddMoney()
 print(Money)
+
+import os
+print(os.listdir(r'C:\Users\steven\Downloads'))
+dir_content = os.walk(r'C:\Users\steven\Downloads')
+for i in dir_content:
+    print(i[2])
